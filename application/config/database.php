@@ -48,10 +48,10 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = '';
-$db['default']['password'] = '';
-$db['default']['database'] = '';
+$db['default']['hostname'] = '172.17.0.2';
+$db['default']['username'] = 'root';
+$db['default']['password'] = 'CyoiydgTv';
+$db['default']['database'] = 'naroky_db';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
@@ -64,6 +64,21 @@ $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
 
+$db['pro']['hostname'] = 'localhost';
+$db['pro']['username'] = '';
+$db['pro']['password'] = '';
+$db['pro']['database'] = '';
+$db['pro']['dbdriver'] = 'mysql';
+$db['pro']['dbprefix'] = '';
+$db['pro']['pconnect'] = TRUE;
+$db['pro']['db_debug'] = TRUE;
+$db['pro']['cache_on'] = FALSE;
+$db['pro']['cachedir'] = '';
+$db['pro']['char_set'] = 'utf8';
+$db['pro']['dbcollat'] = 'utf8_general_ci';
+$db['pro']['swap_pre'] = '';
+$db['pro']['autoinit'] = TRUE;
+$db['pro']['stricton'] = FALSE;
 
 /* End of file database.php */
 /* Location: ./application/config/database.php */
