@@ -21,6 +21,12 @@ class Login extends CI_Controller {
 	{
 		$this->load->view('login');
 	}
+
+	public function auth()
+	{
+		echo "username:".$this->input-get("username")."<br/>";
+		echo "password:".$this->input-get("password")."<br/>";
+	}
 }
 
 /* End of file welcome.php */
