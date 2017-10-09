@@ -20,12 +20,55 @@ class Login extends CI_Controller {
 	public function index()
 	{
 		$this->load->view('login');
+
 	}
 
 	public function auth()
 	{
-		echo "username:".$this->input-get("username")."<br/>";
-		echo "password:".$this->input-get("password")."<br/>";
+
+		$this->load->model('User_model');
+
+		$username = $this->input->post("username");
+		$password = $this->input->post("password");
+		
+		$password_encode = MD5($password);
+
+		$result = $this->User_model->getUserAuthen($username);
+
+		if (count($result) > 0 )
+		{
+			$user = $result[0];
+			if ($user->password == $password_encode)
+			{
+				echo "Login Success";
+
+				$last_access = date("Y-m-d H:i:s");
+				$session_array=array(
+				'id'=>(string)$user->ID,
+				'username'=>(string)$user->username,
+				'email'=>(string)$user->email,
+				'status'=>(string)$user->status,
+				'level'=>(string)$user->level,
+				'last_access'=>(string)$last_access
+				);
+				$this->session->set_userdata('login',$session_array);
+				redirect('Home');
+
+			}
+			else
+			{
+				// 4011 Unauthorized:Password miss match
+				redirect('Login?code=4011');
+				//echo "Login Fail";	
+			}
+			 
+		}
+		else
+		{
+			// 4012 Invalid Username
+			redirect('Login?code=4012');	
+		}
+
 	}
 }
 

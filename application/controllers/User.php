@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class Login extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -17,40 +17,39 @@ class Home extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
-	var $header;
-	var $footer;
-	function __construct()
-	{
-		parent::__construct();
-	
-		if(!$this->session->userdata('login'))
-		{
-			redirect('login');
-			exit();
-		}
-		else
-		{
-			$this->header['session']=$this->session->userdata('login');
-			$data['title'] = 'Siamphan';
-			$data['project'] = 'Siamphan';
-			
-			//$this->load->view('header',$data);
-			//$this->load->model('chart_model');
-			//$this->config->load('time_config',TRUE);
-		}
-		
-		$this->load->helper('url');
-	}	
-
 	public function index()
 	{
-		$data = "";
-		
-		$this->load->view('dashboard',$data);
-		
+		$this->load->view('login');
 
 	}
-}
 
+	public function ist()
+	{
+
+		$this->load->model('User_model');
+
+	}
+
+	public function add()
+	{
+
+		$this->load->model('User_model');
+
+	}
+
+	public function delete()
+	{
+
+		$this->load->model('User_model');
+
+	}
+
+	public function edit()
+	{
+
+		$this->load->model('User_model');
+
+	}	
+}
 /* End of file welcome.php */
 /* Location: ./application/controllers/welcome.php */

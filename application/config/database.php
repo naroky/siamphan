@@ -48,11 +48,11 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = '172.17.0.2';
+$db['default']['hostname'] = '172.17.0.3';
 $db['default']['username'] = 'root';
 $db['default']['password'] = 'CyoiydgTv';
 $db['default']['database'] = 'naroky_db';
-$db['default']['dbdriver'] = 'mysql';
+$db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
 $db['default']['db_debug'] = TRUE;

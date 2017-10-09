@@ -25,7 +25,7 @@
         </div>
         <div class="panel-body">  
             
-            <div class="box col-md-4">
+            <div class="box ">
                 <div class="content registerBox" style="display:none;">
                  <div class="form">
                     <form method="post" html="{:multipart=>true}" data-remote="true" action="/register" accept-charset="UTF-8">
