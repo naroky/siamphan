@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Login extends CI_Controller {
+class User extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -17,16 +17,55 @@ class Login extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
+
+	function __construct()
+	{
+		parent::__construct();
+		$header = array();
+		$lastid = 0;
+		if(!$this->session->userdata('login'))
+		{
+			redirect('login');
+			exit();
+		}
+		else
+		{
+			$this->header['session']=$this->session->userdata('login');
+			$data['title'] = 'Mobile Portal Administation : Login';
+			$data['project'] = 'Mobile Portal';
+
+			//$this->load->view('header',$data);
+			//$this->load->model('chart_model');
+			//$this->config->load('time_config',TRUE);
+		}
+
+		$this->menu["menu_active"] = "Home";
+		//$this->load->model("cp_model");
+		//$this->load->helper('url');
+		//$this->load->helper('form');
+		//$this->load->library('email');
+		//$this->load->library('pagination');
+		//$this->load->helper('common');
+	}	
+
 	public function index()
 	{
-		$this->load->view('login');
+		$this->lists();
 
 	}
-
-	public function ist()
+	
+	public function lists()
 	{
-
 		$this->load->model('User_model');
+
+		$data["users"] = $this->User_model->lists();
+
+		
+		$this->load->view('header',$this->header);
+
+		$this->load->view('user/list',$data);
+		$this->load->view('footer');
+
 
 	}
 
@@ -49,7 +88,10 @@ class Login extends CI_Controller {
 
 		$this->load->model('User_model');
 
-	}	
+	}
+
+
+		
 }
 /* End of file welcome.php */
 /* Location: ./application/controllers/welcome.php */

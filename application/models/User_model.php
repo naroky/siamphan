@@ -12,6 +12,14 @@ class User_model extends CI_Model
 	}
 
 
+	function lists()
+	{
+		$this->db->select('*');
+		$this->db->from('siamphan_user');
+		$q=$this->db->get();
+		return $q->result();		
+	}
+
 	function getUserAuthen($username)
 	{
 		$this->db->select('*');
