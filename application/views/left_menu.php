@@ -12,7 +12,7 @@
         </a>
     </li>
     <li>
-        <a href="./table.html">
+        <a href="<?php base_url()?>Customer">
             <i class="material-icons">content_paste</i>
             <p>Customer</p>
         </a>
