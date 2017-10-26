@@ -18,21 +18,21 @@
         </a>
     </li>
     <li>
-        <a href="./typography.html">
+        <a href="<?php base_url()?>Product">
             <i class="material-icons">library_books</i>
-            <p>Typography</p>
+            <p>Product</p>
         </a>
     </li>
     <li>
         <a href="./icons.html">
             <i class="material-icons">bubble_chart</i>
-            <p>Icons</p>
+            <p>Orders</p>
         </a>
     </li>
     <li>
         <a href="./maps.html">
             <i class="material-icons">location_on</i>
-            <p>Maps</p>
+            <p>Sell</p>
         </a>
     </li>
     <li>

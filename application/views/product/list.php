@@ -1,7 +1,7 @@
 <div class="card">
     <div class="card-header" data-background-color="purple">
-        <h4 class="title">PRODUCT MANAGEMENT</h4>
-        <p class="category">Show Product</p>
+        <h4 class="title">PROPUCT MANAGEMENT</h4>
+        <p class="category">&nbsp;</p>
     </div>
     <div class="card-content table-responsive">
 
@@ -13,9 +13,9 @@
         <table class="table">
             <thead class="text-primary">
                 <th>ID</th>
-                <th>Branch Code</th>
+                <th>Code</th>
                 <th>Name</th>
-                <th>Type</th>
+                <th>Category</th>
                 <th>Province</th>
                 <th>Phone</th>
                 <th>&nbsp;</th>

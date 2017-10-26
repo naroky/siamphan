@@ -36,13 +36,13 @@
                               <div class="col-md-4">
                                   <div class="form-group label-floating">
                                       <label class="control-label">Password</label>
-                                      <input type="text" class="form-control">
+                                      <input id="password" name="password" type="Password" class="form-control">
                                   </div>
                               </div>
                               <div class="col-md-4">
                                   <div class="form-group label-floating">
                                       <label class="control-label">Re-Password</label>
-                                      <input type="text" class="form-control">
+                                      <input id="re_password" name="re_password" type="Password" class="form-control">
                                   </div>
                               </div>                              
 

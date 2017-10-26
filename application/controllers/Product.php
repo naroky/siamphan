@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Customer extends CI_Controller {
+class Product extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -61,7 +61,7 @@ class Customer extends CI_Controller {
 
 		$data["customer"] = $this->Customer_model->lists();
 		$this->load->view('header',$this->header);
-		$this->load->view('customer/list',$data);
+		$this->load->view('product/list',$data);
 		$this->load->view('footer');
 
 
@@ -72,7 +72,7 @@ class Customer extends CI_Controller {
 
 		$data="";
 		$this->load->view('header',$this->header);
-		$this->load->view('customer/add',$data);
+		$this->load->view('product/add',$data);
 		$this->load->view('footer');		
 
 	}
@@ -95,7 +95,7 @@ class Customer extends CI_Controller {
 		$data="";
 		$this->load->model('User_model');
 		$this->load->view('header',$this->header);
-		$this->load->view('customer/edit',$data);
+		$this->load->view('product/edit',$data);
 		$this->load->view('footer');		
 
 	}
