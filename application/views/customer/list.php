@@ -1,7 +1,7 @@
 <div class="card">
     <div class="card-header" data-background-color="purple">
-        <h4 class="title">PRODUCT MANAGEMENT</h4>
-        <p class="category">Show Product</p>
+        <h4 class="title">CUSTOMER MANAGEMENT</h4>
+        <p class="category">Show Customer</p>
     </div>
     <div class="card-content table-responsive">
 

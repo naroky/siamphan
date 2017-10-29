@@ -18,11 +18,37 @@
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
+    <!--   Core JS Files   -->
+    <script src="<?php echo base_url()?>/assets/js/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="<?php echo base_url()?>/assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="<?php echo base_url()?>/assets/js/material.min.js" type="text/javascript"></script>
+    <!--  Charts Plugin -->
+    <script src="<?php echo base_url()?>/assets/js/chartist.min.js"></script>
+    <!--  Dynamic Elements plugin -->
+    <script src="<?php echo base_url()?>/assets/js/arrive.min.js"></script>
+    <!--  PerfectScrollbar Library -->
+    <script src="<?php echo base_url()?>/assets/js/perfect-scrollbar.jquery.min.js"></script>
+    <!--  Notifications Plugin    -->
+    <script src="<?php echo base_url()?>/assets/js/bootstrap-notify.js"></script>
+    <!--  Google Maps Plugin    -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+    <!-- Material Dashboard javascript methods -->
+    <script src="<?php echo base_url()?>/assets/js/material-dashboard.js?v=1.2.0"></script>
+    <!-- Material Dashboard DEMO methods, don't include it in your project! -->
+    <script src="<?php echo base_url()?>/assets/js/demo.js"></script>
+
+    <!-- Validation -->
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/validation/css/validationEngine.jquery.css" type="text/css"  charset="utf-8"/>
+    <script src="<?php echo base_url();?>assets/validation/js/languages/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8">
+    </script>
+    <script src="<?php echo base_url();?>assets/validation/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8">
+    </script>
+    
 </head>
 
 <body>
     <div class="wrapper">
-        <div class="sidebar" data-color="purple" data-image="../assets/img/sidebar-1.jpg">
+        <div class="sidebar" data-color="purple" data-image="<?php echo base_url();?>/assets/img/sidebar-1.jpg">
             <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
 
@@ -102,3 +128,8 @@
                 </div>
             </nav>
             <div class="content">
+            <div id="alert" class="alert alert-primary" style="display: none;">
+                <button type="button" aria-hidden="true" class="close">×</button>
+                <span>
+                    <b> Primary - </b> This is a regular notification made with ".alert-primary"</span>
+            </div>    

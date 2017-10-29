@@ -19,6 +19,10 @@ class Customer_model extends CI_Model
 		return $q->result();		
 	}
 
-
+	function save($data)
+	{
+		$result = $this->db->insert('siamphan_customer', $data); 
+		var_dump($result);
+	}
 }
 ?>

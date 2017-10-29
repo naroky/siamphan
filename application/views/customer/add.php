@@ -1,3 +1,59 @@
+<script>
+$(document).ready(function() {
+
+    // Javascript method's body can be found in assets/js/demos.js
+  $("#ajaxform").submit(function(e)
+  {
+    //$("#loading_page").show();
+    var saveURL = "<?php echo base_url();?>Customer/save/?method=api";
+    var postData = $(this).serializeArray();
+    var formURL = $(this).attr("action");
+    alert(saveURL);
+    $.ajax(
+    {
+      url : saveURL,
+      type: "POST",
+      data : postData,
+      success:function(data, textStatus, jqXHR)
+      {
+        //$("#simple-msg").html('<div class="alert alert-info">Success</div>');
+        alert(textStatus+":"+data);
+        //$("#loading_page").hide();
+        window.location.replace("<?php echo base_url()?>Customer");
+
+      },
+      error: function(jqXHR, textStatus, errorThrown)
+      {
+        //$("#simple-msg").html('<div class="alert alert-info">AJAX Request Failed<br/> textStatus='+textStatus+', errorThrown='+errorThrown+'</div>');
+        alert('Error:'+textStatus);
+        //$("#loading_page").hide();
+      }
+    });
+    //e.preventDefault(); //STOP default action
+    //e.unbind();
+
+  });
+
+  $("#btn-save").click(function()
+  {
+    
+    result = $("#ajaxform").validationEngine("validate");
+
+    if (result == true)
+    {
+      alert("save");
+      $("#ajaxform").submit();      
+    } else
+    {
+      alert("fail");
+    }
+
+  });
+});
+ 
+
+</script>
+
 <div class="card">
     <div class="card-header" data-background-color="purple">
         <h4 class="title">CUSTOMER MANAGEMENT</h4>
@@ -5,20 +61,53 @@
     </div>
     <div class="card-content table-responsive">
 
+  [""]=>
+  bool(false)
+  [""]=>
+  bool(false)
+  [""]=>
+  bool(false)
+  [""]=>
+  bool(false)
+  [""]=>
+  bool(false)
+  [""]=>
+  bool(false)
+  [""]=>
+  bool(false)
+  [""]=>
+  bool(false)
+  ["mobile"]=>
+  bool(false)
+  ["email"]=>
+  bool(false)
+  ["peopleid"]=>
+  bool(false)
+  ["birthdate"]=>
+  bool(false)
+  ["sex"]=>
+  bool(false)
+  ["membercardnum_1"]=>
+  bool(false)
+  ["membercarddateissue_1"]=>
+  bool(false)
+  ["membercarddateexpire_1"]=>
+  bool(false)
+  ["lastupdate"]=>
               <div class="card-content">
-                  <form>
+                  <form id="ajaxform" name="form-add" method="post" action="">
                     <!-- Content -->
                       <div class="row">
                           <div class="col-md-5">
                               <div class="form-group label-floating">
                                   <label class="control-label">BrandCode</label>
-                                  <input type="text" class="form-control" >
+                                  <input id="branchcode" name="branchcode" type="text" class="form-control validate[required]" >
                               </div>
                           </div>
                           <div class="col-md-5">
                               <div class="form-group label-floating">
                                   <label class="control-label">Customer Type</label>
-                                  <input type="email" class="form-control">
+                                  <input id="customertype" name="customertype" type="text" class="form-control validate[required]">
                               </div>
                           </div>
                       </div>
@@ -26,13 +115,13 @@
                           <div class="col-md-5">
                               <div class="form-group label-floating">
                                   <label class="control-label">Thai Name</label>
-                                  <input type="text" class="form-control">
+                                  <input id="thainame" name="thainame" type="text" class="form-control validate[required]">
                               </div>
                           </div>
                           <div class="col-md-5">
                               <div class="form-group label-floating">
                                   <label class="control-label">Thai FullName</label>
-                                  <input type="text" class="form-control">
+                                  <input id="thaifullname" name="thaifullname" type="text" class="form-control validate[required]">
                               </div>
                           </div>                              
 
@@ -41,13 +130,13 @@
                           <div class="col-md-5">
                               <div class="form-group label-floating">
                                   <label class="control-label">Eng Name</label>
-                                  <input type="text" class="form-control">
+                                  <input id="engname" name="engname" type="text" class="form-control validate[required]">
                               </div>
                           </div>
                           <div class="col-md-5">
                               <div class="form-group label-floating">
                                   <label class="control-label">Eng FullName</label>
-                                  <input type="text" class="form-control">
+                                  <input id="engfullname" name="engfullname" type="text" class="form-control validate[required]">
                               </div>
                           </div>
                       </div>
@@ -55,13 +144,13 @@
                           <div class="col-md-5">
                               <div class="form-group label-floating">
                                   <label class="control-label">Address</label>
-                                  <input type="text" class="form-control">
+                                  <input id="address" name="address" type="text" class="form-control validate[required]">
                               </div>
                           </div>
                           <div class="col-md-5">
                               <div class="form-group label-floating">
                                   <label class="control-label">Province</label>
-                                  <input type="text" class="form-control">
+                                  <input id="province" name="province" type="text" class="form-control validate[required]">
                               </div>
                           </div>
                       </div>
@@ -69,13 +158,13 @@
                           <div class="col-md-5">
                               <div class="form-group label-floating">
                                   <label class="control-label">ZipCode</label>
-                                  <input type="text" class="form-control">
+                                  <input id="zipcode" name="zipcode" type="text" class="form-control validate[required]">
                               </div>
                           </div>
                           <div class="col-md-5">
                               <div class="form-group label-floating">
                                   <label class="control-label">Phone</label>
-                                  <input type="text" class="form-control">
+                                  <input id="phone" name="phone" type="text" class="form-control validate[required]">
                               </div>
                           </div>
                       </div>
@@ -84,13 +173,13 @@
                           <div class="col-md-5">
                               <div class="form-group label-floating">
                                   <label class="control-label">Fax</label>
-                                  <input type="text" class="form-control">
+                                  <input id="fax" name="fax" type="text" class="form-control validate[required]">
                               </div>
                           </div>
                           <div class="col-md-5">
                               <div class="form-group label-floating">
                                   <label class="control-label">Mobile</label>
-                                  <input type="text" class="form-control">
+                                  <input id="mobile" name="mobile" type="text" class="form-control validate[required]">
                               </div>
                           </div>
                       </div>
@@ -98,13 +187,13 @@
                           <div class="col-md-5">
                               <div class="form-group label-floating">
                                   <label class="control-label">Email</label>
-                                  <input type="text" class="form-control">
+                                  <input id="email" name="email" type="text" class="form-control validate[required]">
                               </div>
                           </div>
                           <div class="col-md-5">
                               <div class="form-group label-floating">
                                   <label class="control-label">Peopleid</label>
-                                  <input type="text" class="form-control">
+                                  <input id="peopleid" name="peopleid" type="text" class="form-control validate[required]">
                               </div>
                           </div>
                       </div>
@@ -112,21 +201,21 @@
                           <div class="col-md-5">
                               <div class="form-group label-floating">
                                   <label class="control-label">Birthdate</label>
-                                  <input type="text" class="form-control">
+                                  <input id="birthdate" name="birthdate" type="text" class="form-control validate[required]">
                               </div>
                           </div>
                           <div class="col-md-5">
                               <div class="form-group label-floating">
                                   <label class="control-label">sex</label>
-                                  <input type="text" class="form-control">
+                                  <input id="sex" name="sex" type="text" class="form-control validate[required]">
                               </div>
                           </div>
                       </div>
                       <!-- Content -->
 
 
-                      <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      <button id="btn-save" type="submit" class="btn btn-primary pull-right">Update Profile</button>
+                      <button id="cancel" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                       <div class="clearfix"></div>
                   </form>
               </div>

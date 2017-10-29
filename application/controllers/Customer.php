@@ -79,8 +79,28 @@ class Customer extends CI_Controller {
 	public function save()
 	{
 
-		$this->load->model('User_model');
-
+		$insert_data = array(
+	        'branchcode' => $this->input->post('branchcode', TRUE),
+	        'customertype' => $this->input->post('customertype', TRUE),
+	        'thainame' => $this->input->post('thainame', TRUE),
+		    'thaifullname' => $this->input->post('thaifullname', TRUE),
+			'engname' => $this->input->post('engname', TRUE),
+			'engfullname' => $this->input->post('engfullname', TRUE),
+			'address' => $this->input->post('address', TRUE),
+			'province' => $this->input->post('province', TRUE),
+			'zipcode' => $this->input->post('zipcode', TRUE),
+			'phone' => $this->input->post('phone', TRUE),
+			'fax' => $this->input->post('fax', TRUE),
+			'mobile' => $this->input->post('mobile', TRUE),
+			'email' => $this->input->post('email', TRUE),
+			'peopleid' => $this->input->post('peopleid', TRUE),
+			'birthdate' => $this->input->post('birthdate', TRUE),
+			'sex' => $this->input->post('sex', TRUE),
+			'lastupdate' => date("Y-m-d H:i:s")
+		);
+		var_dump($insert_data);
+		$this->load->model('customer_model');
+		$this->customer_model->save($insert_data);
 	}
 
 	public function delete()
