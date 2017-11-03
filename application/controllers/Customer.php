@@ -98,22 +98,34 @@ class Customer extends CI_Controller {
 			'sex' => $this->input->post('sex', TRUE),
 			'lastupdate' => date("Y-m-d H:i:s")
 		);
-		var_dump($insert_data);
+		
 		$this->load->model('customer_model');
-		$this->customer_model->save($insert_data);
+		$result = $this->customer_model->save($insert_data);
+		if ($result == true)
+		{
+			echo "Success";	
+		} 
+		else
+		{
+			echo "Fail";
+		}		
 	}
 
 	public function delete()
 	{
-
-		$this->load->model('User_model');
+		$delete_data["id"]=$this->input->get("id");
+		$this->load->model('customer_model');
+		$result = $this->customer_model->delete($delete_data);
 
 	}
 
 	public function edit()
 	{
-		$data="";
-		$this->load->model('User_model');
+		$data["id"]=$this->input->get("id");
+		$this->load->model('customer_model');
+		$data["cusinfo"]  = $this->customer_model->getcust($data);
+		
+		// Display
 		$this->load->view('header',$this->header);
 		$this->load->view('customer/edit',$data);
 		$this->load->view('footer');		
@@ -122,9 +134,37 @@ class Customer extends CI_Controller {
 
 	public function update()
 	{
-
-		$this->load->model('User_model');
-
+		$id = $this->input->post('id', TRUE);
+		$update_data = array(
+	        'branchcode' => $this->input->post('branchcode', TRUE),
+	        'customertype' => $this->input->post('customertype', TRUE),
+	        'thainame' => $this->input->post('thainame', TRUE),
+		    'thaifullname' => $this->input->post('thaifullname', TRUE),
+			'engname' => $this->input->post('engname', TRUE),
+			'engfullname' => $this->input->post('engfullname', TRUE),
+			'address' => $this->input->post('address', TRUE),
+			'province' => $this->input->post('province', TRUE),
+			'zipcode' => $this->input->post('zipcode', TRUE),
+			'phone' => $this->input->post('phone', TRUE),
+			'fax' => $this->input->post('fax', TRUE),
+			'mobile' => $this->input->post('mobile', TRUE),
+			'email' => $this->input->post('email', TRUE),
+			'peopleid' => $this->input->post('peopleid', TRUE),
+			'birthdate' => $this->input->post('birthdate', TRUE),
+			'sex' => $this->input->post('sex', TRUE),
+			'lastupdate' => date("Y-m-d H:i:s")
+		);
+		$this->load->model('customer_model');
+		$result = $this->customer_model->update($id,$update_data);
+		if ($result == true)
+		{
+			echo "Success";	
+		} 
+		else
+		{
+			echo "Fail";
+		}
+		
 	}
 		
 }

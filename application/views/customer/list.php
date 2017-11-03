@@ -30,7 +30,7 @@
                     <td>&nbsp;<?php echo $row->province?></td>
                     <td>&nbsp;<?php echo $row->phone?></td>
                     <td class="text-primary">                     
-                    <a href="./Customer/edit"><i class="material-icons">border_color</i></a>&nbsp;&nbsp;&nbsp;
+                    <a href="./Customer/edit?id=<?php echo $row->id?>"><i class="material-icons">border_color</i></a>&nbsp;&nbsp;&nbsp;
                     <a data-toggle="modal" href="#MDDelUser"><i class="material-icons">clear</i></a>&nbsp;&nbsp;&nbsp;
                    
                     </td>

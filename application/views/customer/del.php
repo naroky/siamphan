@@ -22,6 +22,7 @@
                               <div class="col-md-5">
                                   <div class="form-group label-floating">
                                       <label class="control-label">Confirm Delelte this Record ?</label>
+                                      <a href="./Customer/delete/?id=<?php echo $id?>" class="btn btn-primary pull-right">Delete</a>
                                       <button type="submit" class="btn btn-primary pull-right">Yes</button>
                                       <button type="button" class="btn btn-default" data-dismiss="modal">No</button> 
                                   </div>

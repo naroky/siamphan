@@ -19,10 +19,30 @@ class Customer_model extends CI_Model
 		return $q->result();		
 	}
 
+	function getcust($data)
+	{
+		$id = $data["id"];
+		$this->db->select('*');
+		$this->db->from('siamphan_customer');
+		$this->db->where("id","$id");
+		$q=$this->db->get();
+		return $q->result();		
+	}
+
 	function save($data)
 	{
 		$result = $this->db->insert('siamphan_customer', $data); 
-		var_dump($result);
+		return $result;
 	}
+
+	function update($id,$data)
+	{
+
+		$this->db->where('id', $id);
+		$result = $this->db->update('siamphan_customer', $data);
+		
+		return $result;
+	}
+
 }
 ?>
