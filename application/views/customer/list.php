@@ -21,7 +21,12 @@
                 <th>&nbsp;</th>
             </thead>
             <tbody>
-                <?php foreach($customer as $row){ ?>
+                <?php 
+                $i=0;
+                foreach($customer as $row){ 
+
+
+                    ?>;
                 <tr>
                     <td>&nbsp;<?php echo $row->id?></td>
                     <td>&nbsp;<?php echo $row->branchcode?></td>
@@ -31,11 +36,27 @@
                     <td>&nbsp;<?php echo $row->phone?></td>
                     <td class="text-primary">                     
                     <a href="./Customer/edit?id=<?php echo $row->id?>"><i class="material-icons">border_color</i></a>&nbsp;&nbsp;&nbsp;
-                    <a data-toggle="modal" href="#MDDelUser"><i class="material-icons">clear</i></a>&nbsp;&nbsp;&nbsp;
-                   
+                    <a id="btn-del<?php echo $i?>" href="#"><i class="material-icons">clear</i></a>&nbsp;&nbsp;&nbsp;
+                    
+                    <script>
+                    $("#btn-del<?php echo $i?>").click(function(){
+                        if(confirm("Are you sure you want to delete this?")){
+
+                            $.get( "<?php echo base_url()?>Customer/del/<?php echo $row->id?>", function( data ) {
+                                location.reload();
+                                //e.preventDefault(); //STOP default action
+                            });
+                        }
+                        else{
+                            return false;
+                        }
+                    });
+                    </script>                      
                     </td>
                 </tr>
-                <?php }?>
+                <?php 
+                    $i++;
+                }?>
             </tbody>
         </table>
     </div>

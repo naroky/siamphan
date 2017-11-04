@@ -111,11 +111,10 @@ class Customer extends CI_Controller {
 		}		
 	}
 
-	public function delete()
+	public function del($id)
 	{
-		$delete_data["id"]=$this->input->get("id");
 		$this->load->model('customer_model');
-		$result = $this->customer_model->delete($delete_data);
+		$result = $this->customer_model->delete($id);
 
 	}
 

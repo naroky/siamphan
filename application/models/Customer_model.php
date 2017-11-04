@@ -43,6 +43,16 @@ class Customer_model extends CI_Model
 		
 		return $result;
 	}
+	
+	function delete($id)
+	{
+
+		$this->db->where('id', $id);
+		$result = $this->db->delete('siamphan_customer');
+		return $result;
+	}
+
+
 
 }
 ?>
