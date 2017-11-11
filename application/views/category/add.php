@@ -5,7 +5,7 @@ $(document).ready(function() {
   $("#ajaxform").submit(function(e)
   {
     //$("#loading_page").show();
-    var saveURL = "<?php echo base_url();?>Product/save/?method=api";
+    var saveURL = "<?php echo base_url();?>Category/save/?method=api";
     var postData = $(this).serializeArray();
     var formURL = $(this).attr("action");
     alert(saveURL);
@@ -70,45 +70,16 @@ $(document).ready(function() {
                           </div>
                           <div class="col-md-5">
                               <div class="form-group label-floating">
-                                  <label class="control-label">Code</label>
-                                  <input id="code" name="code" type="text" class="form-control">
-                              </div>
-                          </div>
-                      </div>
-                      <div class="row">
-                          <div class="col-md-5">
-                              <div class="form-group label-floating">
-                                  <label class="control-label">Category</label>
-                                  <input id="category" name="category" type="text" class="form-control">
-                              </div>
-                          </div>
-                          <div class="col-md-5">
-                              <div class="form-group label-floating">
                                   <label class="control-label">Status</label>
-                                  <input id="status" name="status" type="text" class="form-control">
-                              </div>
-                          </div>                              
-
-                      </div>
-                      <div class="row">
-                          <div class="col-md-5">
-                              <div class="form-group label-floating">
-                                  <label class="control-label">Sell Price</label>
-                                  <input id="sell_price" name="sell_price" type="text" class="form-control">
-                              </div>
-                          </div>
-                          <div class="col-md-5">
-                              <div class="form-group label-floating">
-                                  <label class="control-label">Unit</label>
-                                  <input id="unit" name="unit" type="text" class="form-control">
+                                  <select id="code" name="code" class="form-control">
+                                    <option value="1">Enable</option>
+                                    <option value="2">Disable</option>
+                                  </select>
+                                  
                               </div>
                           </div>
                       </div>
-                     
-                     
-                     
-
-
+                    
                       <button id="btn-save" type="submit" class="btn btn-primary pull-right">Update Profile</button>
                       <button id="cancel" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                       <div class="clearfix"></div>

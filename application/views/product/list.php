@@ -5,41 +5,55 @@
     </div>
     <div class="card-content table-responsive">
 
-        <a class="btn btn-primary" href="./Customer/add">
+        <a class="btn btn-primary" href="<?php echo base_url()?>Product/add">
             <i class="material-icons">add</i>&nbsp;New
-        </a>
-
-        
+        </a>        
         <table class="table">
             <thead class="text-primary">
                 <th>ID</th>
-                <th>Code</th>
                 <th>Name</th>
+                <th>Code</th>
                 <th>Category</th>
-                <th>Province</th>
-                <th>Phone</th>
+                <th>Status</th>
+                <th>Sell Price</th>
+                <th>Unit</th>
                 <th>&nbsp;</th>
             </thead>
             <tbody>
-                <?php foreach($customer as $row){ ?>
+                <?php 
+                $i=0;
+                foreach($product as $row){ ?>
                 <tr>
                     <td>&nbsp;<?php echo $row->id?></td>
-                    <td>&nbsp;<?php echo $row->branchcode?></td>
-                    <td>&nbsp;<?php echo $row->thainame?></td>
-                    <td>&nbsp;<?php echo $row->customertype?></td>
-                    <td>&nbsp;<?php echo $row->province?></td>
-                    <td>&nbsp;<?php echo $row->phone?></td>
-                    <td class="text-primary">                     
-                    <a href="./Customer/edit"><i class="material-icons">border_color</i></a>&nbsp;&nbsp;&nbsp;
-                    <a data-toggle="modal" href="#MDDelUser"><i class="material-icons">clear</i></a>&nbsp;&nbsp;&nbsp;
-                   
+                    <td>&nbsp;<?php echo $row->name?></td>
+                    <td>&nbsp;<?php echo $row->code?></td>
+                    <td>&nbsp;<?php echo $row->category?></td>
+                    <td>&nbsp;<?php echo $row->status?></td>
+                    <td>&nbsp;<?php echo $row->sell_price?></td>
+                    <td>&nbsp;<?php echo $row->unit?></td>
+                    <td class="text-primary"> 
+                    <a href="<?php echo base_url()?>Product/edit?id=<?php echo $row->id?>"><i class="material-icons">border_color</i></a>&nbsp;&nbsp;&nbsp;
+                    
+                    <a id="btn-del<?php echo $i?>" href="#"><i class="material-icons">clear</i></a>&nbsp;&nbsp;&nbsp;
+                    
+                    <script>
+                    $("#btn-del<?php echo $i?>").click(function(){
+                        if(confirm("Are you sure you want to delete this?")){
+
+                            $.get( "<?php echo base_url()?>Product/del/<?php echo $row->id?>", function( data ) {
+                                location.reload();
+                                //e.preventDefault(); //STOP default action
+                            });
+                        }
+                        else{
+                            return false;
+                        }
+                    });
+                    </script>                     
                     </td>
                 </tr>
-                <?php }?>
+                <?php $i++; }?>
             </tbody>
         </table>
     </div>
 </div>
-
-
-<?php $this->load->view('customer/del');?> 

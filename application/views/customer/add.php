@@ -60,40 +60,6 @@ $(document).ready(function() {
         <p class="category">New Customer</p>
     </div>
     <div class="card-content table-responsive">
-
-  [""]=>
-  bool(false)
-  [""]=>
-  bool(false)
-  [""]=>
-  bool(false)
-  [""]=>
-  bool(false)
-  [""]=>
-  bool(false)
-  [""]=>
-  bool(false)
-  [""]=>
-  bool(false)
-  [""]=>
-  bool(false)
-  ["mobile"]=>
-  bool(false)
-  ["email"]=>
-  bool(false)
-  ["peopleid"]=>
-  bool(false)
-  ["birthdate"]=>
-  bool(false)
-  ["sex"]=>
-  bool(false)
-  ["membercardnum_1"]=>
-  bool(false)
-  ["membercarddateissue_1"]=>
-  bool(false)
-  ["membercarddateexpire_1"]=>
-  bool(false)
-  ["lastupdate"]=>
               <div class="card-content">
                   <form id="ajaxform" name="form-add" method="post" action="">
                     <!-- Content -->

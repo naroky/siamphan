@@ -24,6 +24,12 @@
         </a>
     </li>
     <li>
+        <a href="<?php base_url()?>Category">
+            <i class="material-icons">library_books</i>
+            <p>Category</p>
+        </a>
+    </li>    
+    <li>
         <a href="./icons.html">
             <i class="material-icons">bubble_chart</i>
             <p>Orders</p>

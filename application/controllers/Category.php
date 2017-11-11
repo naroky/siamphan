@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Product extends CI_Controller {
+class Category extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -57,11 +57,11 @@ class Product extends CI_Controller {
 	public function lists()
 	{
 		$data = "";
-		$this->load->model('Product_model');
+		$this->load->model('category_model');
 
-		$data["product"] = $this->Product_model->lists();
+		$data["category"] = $this->category_model->lists();
 		$this->load->view('header',$this->header);
-		$this->load->view('product/list',$data);
+		$this->load->view('category/list',$data);
 		$this->load->view('footer');
 
 
@@ -72,7 +72,7 @@ class Product extends CI_Controller {
 
 		$data="";
 		$this->load->view('header',$this->header);
-		$this->load->view('product/add',$data);
+		$this->load->view('category/add',$data);
 		$this->load->view('footer');		
 
 	}
@@ -80,16 +80,12 @@ class Product extends CI_Controller {
 	{
 		$insert_data = array(
 	        'name' => $this->input->post('name', TRUE),
-	        'code' => $this->input->post('code', TRUE),
-	        'category' => $this->input->post('category', TRUE),
-		    'status' => $this->input->post('status', TRUE),
-			'sell_price' => $this->input->post('sell_price', TRUE),
-			'unit' => $this->input->post('unit', TRUE),
+	        'status' => $this->input->post('status', TRUE),
 			'lastupdate' => date("Y-m-d H:i:s")
 		);
 		
-		$this->load->model('product_model');
-		$result = $this->product_model->save($insert_data);
+		$this->load->model('category_model');
+		$result = $this->category_model->save($insert_data);
 		if ($result == true)
 		{
 			echo "Success";	
