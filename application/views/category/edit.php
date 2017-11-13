@@ -1,14 +1,11 @@
 <script>
 $(document).ready(function() {
-
+  var saveURL;
     // Javascript method's body can be found in assets/js/demos.js
   $("#ajaxform").submit(function(e)
   {
     //$("#loading_page").show();
-    var saveURL = "<?php echo base_url();?>Product/update/?method=api";
     var postData = $(this).serializeArray();
-    var formURL = $(this).attr("action");
-    alert(saveURL);
     $.ajax(
     {
       url : saveURL,
@@ -19,7 +16,7 @@ $(document).ready(function() {
         //$("#simple-msg").html('<div class="alert alert-info">Success</div>');
         alert(textStatus+":"+data);
         //$("#loading_page").hide();
-        window.location.replace("<?php echo base_url()?>Product");
+        window.location.replace("<?php echo base_url()?>Category");
 
       },
       error: function(jqXHR, textStatus, errorThrown)
@@ -36,6 +33,7 @@ $(document).ready(function() {
 
   $("#btn-save").click(function()
   {
+    saveURL = "<?php echo base_url();?>Category/update/?method=api";
     
     result = $("#ajaxform").validationEngine("validate");
 
@@ -62,8 +60,18 @@ $(document).ready(function() {
               <div class="card-content">
                   <form id="ajaxform" name="form-add" method="post" action="">
                     <?php
-                    foreach ($prodinfo as $row) {
-           
+                    foreach ($cateinfo as $row) {
+                      if ($row->status == 1)
+                      {
+                        $enable_select = "Selected";
+                        $disable_select = "";
+                      }
+                      else
+                      {
+                        $enable_select = "";
+                        $disable_select = "Selected";
+
+                      }
                     
                     ?>
                       <div class="row">
@@ -75,43 +83,19 @@ $(document).ready(function() {
                           </div>
                           <div class="col-md-5">
                               <div class="form-group label-floating">
-                                  <label class="control-label">Code</label>
-                                  <input id="code" name="code" type="text" class="form-control" value="<?php echo $row->code?>">
-                              </div>
-                          </div>
-                      </div>
-                      <div class="row">
-                          <div class="col-md-5">
-                              <div class="form-group label-floating">
-                                  <label class="control-label">Category</label>
-                                  <input id="category" name="category" type="text" class="form-control" value="<?php echo $row->category?>">
-                              </div>
-                          </div>
-                          <div class="col-md-5">
-                              <div class="form-group label-floating">
                                   <label class="control-label">Status</label>
-                                  <input id="status" name="status" type="text" class="form-control" value="<?php echo $row->status?>">
+                                  <select id="status" name="status" class="form-control">
+                                    <option value="1" <?php echo $enable_select?>>Enable</option>
+                                    <option value="2" <?php echo $disable_select?>>Disable</option>
+                                  </select>
+                                  
                               </div>
-                          </div>                              
-
+                          </div>  
+                        
                       </div>
-                      <div class="row">
-                          <div class="col-md-5">
-                              <div class="form-group label-floating">
-                                  <label class="control-label">Sell Price</label>
-                                  <input id="sell_price" name="sell_price" type="text" class="form-control" value="<?php echo $row->sell_price?>">
-                              </div>
-                          </div>
-                          <div class="col-md-5">
-                              <div class="form-group label-floating">
-                                  <label class="control-label">Unit</label>
-                                  <input id="unit" name="unit" type="text" class="form-control" value="<?php echo $row->unit?>">
-                              </div>
-                          </div>
-                      </div>
-                     
+                      
                       <input id="id" name="id" type="hidden" value="<?php echo $row->id?>">
-                      <button id="btn-save" type="submit" class="btn btn-primary pull-right">Update Profile</button>
+                      <button id="btn-save" type="button" class="btn btn-primary pull-right">Update Profile</button>
                       <button id="cancel" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                       <div class="clearfix"></div>
                       <?php

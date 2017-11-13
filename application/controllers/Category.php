@@ -78,9 +78,10 @@ class Category extends CI_Controller {
 	}
 	public function save()
 	{
+		$data = $_REQUEST;
 		$insert_data = array(
-	        'name' => $this->input->post('name', TRUE),
-	        'status' => $this->input->post('status', TRUE),
+	        'name' => urldecode($data['name']) ,
+	        'status' => $data['status'],
 			'lastupdate' => date("Y-m-d H:i:s")
 		);
 		
@@ -99,20 +100,20 @@ class Category extends CI_Controller {
 	public function del($id)
 	{
 
-		$this->load->model('product_model');
-		$result = $this->product_model->delete($id);
+		$this->load->model('category_model');
+		$result = $this->category_model->delete($id);
 
 	}
 
 	public function edit()
 	{
 		$data["id"]=$this->input->get("id");
-		$this->load->model('product_model');
-		$data["prodinfo"]  = $this->product_model->getprod($data);
+		$this->load->model('category_model');
+		$data["cateinfo"]  = $this->category_model->getcate($data);
 		
 		// Display
 		$this->load->view('header',$this->header);
-		$this->load->view('product/edit',$data);
+		$this->load->view('category/edit',$data);
 		$this->load->view('footer');		
 
 	}
@@ -120,18 +121,17 @@ class Category extends CI_Controller {
 
 	public function update()
 	{
-		$id = $this->input->post('id', TRUE);
+		$data = $_REQUEST;
+		//$id = $this->input->post('id', TRUE);
+		$id = $data["id"];
+
 		$update_data = array(
-	        'name' => $this->input->post('name', TRUE),
-	        'code' => $this->input->post('code', TRUE),
-	        'category' => $this->input->post('category', TRUE),
-		    'status' => $this->input->post('status', TRUE),
-			'sell_price' => $this->input->post('sell_price', TRUE),
-			'unit' => $this->input->post('unit', TRUE),
+	        'name' => $data["name"],
+	        'status' => $this->input->post('status', TRUE),
 			'lastupdate' => date("Y-m-d H:i:s")
 		);
-		$this->load->model('product_model');
-		$result = $this->product_model->update($id,$update_data);
+		$this->load->model('category_model');
+		$result = $this->category_model->update($id,$update_data);
 		if ($result == true)
 		{
 			echo "Success";	

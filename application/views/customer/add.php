@@ -2,12 +2,12 @@
 $(document).ready(function() {
 
     // Javascript method's body can be found in assets/js/demos.js
+
   $("#ajaxform").submit(function(e)
   {
     //$("#loading_page").show();
     var saveURL = "<?php echo base_url();?>Customer/save/?method=api";
     var postData = $(this).serializeArray();
-    var formURL = $(this).attr("action");
     alert(saveURL);
     $.ajax(
     {
@@ -29,7 +29,7 @@ $(document).ready(function() {
         //$("#loading_page").hide();
       }
     });
-    //e.preventDefault(); //STOP default action
+    e.preventDefault(); //STOP default action
     //e.unbind();
 
   });

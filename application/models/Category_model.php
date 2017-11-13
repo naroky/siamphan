@@ -19,7 +19,7 @@ class Category_model extends CI_Model
 		return $q->result();		
 	}
 
-	function getprod($data)
+	function getcate($data)
 	{
 		$id = $data["id"];
 		$this->db->select('*');
@@ -31,7 +31,7 @@ class Category_model extends CI_Model
 
 	function save($data)
 	{
-		var_dump( $data);
+		
 		$result = $this->db->insert('siamphan_category', $data); 
 		return $result;
 	}

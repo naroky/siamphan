@@ -79,7 +79,14 @@ $(document).ready(function() {
                           <div class="col-md-5">
                               <div class="form-group label-floating">
                                   <label class="control-label">Category</label>
-                                  <input id="category" name="category" type="text" class="form-control">
+                                  <?php 
+                             
+
+                                    
+
+                                    echo form_dropdown('category', $cate_data, '','id="category" name="category" class="form-control"');
+
+                                  ?>
                               </div>
                           </div>
                           <div class="col-md-5">
