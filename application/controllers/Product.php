@@ -121,10 +121,14 @@ class Product extends CI_Controller {
 	{
 		$data["id"]=$this->input->get("id");
 		$this->load->model('product_model');
-		$this->load->model('category_model');
+		$this->load->model('Category_model');
 		$data["prodinfo"]  = $this->product_model->getprod($data);
-		$data["prodinfo"]  = $this->product_model->getcate_byid($id);		
-		// Display
+		$data["catelist"] = $this->Category_model->lists();	
+		foreach ($data["catelist"]  as $row) {
+			# code...
+			//var_dump($row);
+			$cate_data[$row->id] = $row->name;
+		}
 		$this->load->view('header',$this->header);
 		$this->load->view('product/edit',$data);
 		$this->load->view('footer');		

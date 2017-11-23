@@ -69,24 +69,80 @@ class User extends CI_Controller {
 
 	}
 
+
 	public function add()
 	{
 
-		$this->load->model('User_model');
+		$data="";
+		$this->load->view('header',$this->header);
+		$this->load->view('user/add',$data);
+		$this->load->view('footer');		
 
 	}
+	public function save()
+	{
+		$data = $_REQUEST;
+		$insert_data = array(
+	        'name' => urldecode($data['name']) ,
+	        'status' => $data['status'],
+			'lastupdate' => date("Y-m-d H:i:s")
+		);
+		
+		$this->load->model('user_model');
+		$result = $this->user_model->save($insert_data);
+		if ($result == true)
+		{
+			echo "Success";	
+		} 
+		else
+		{
+			echo "Fail";
+		}		
+	}
 
-	public function delete()
+	public function del($id)
 	{
 
-		$this->load->model('User_model');
+		$this->load->model('user_model');
+		$result = $this->user_model->delete($id);
 
 	}
 
 	public function edit()
 	{
+		$data["id"]=$this->input->get("id");
+		$this->load->model('user_model');
+		$data["cateinfo"]  = $this->user_model->getuser($data);
+		
+		// Display
+		$this->load->view('header',$this->header);
+		$this->load->view('user/edit',$data);
+		$this->load->view('footer');		
 
-		$this->load->model('User_model');
+	}
+
+
+	public function update()
+	{
+		$data = $_REQUEST;
+		//$id = $this->input->post('id', TRUE);
+		$id = $data["id"];
+
+		$update_data = array(
+	        'name' => $data["name"],
+	        'status' => $this->input->post('status', TRUE),
+			'lastupdate' => date("Y-m-d H:i:s")
+		);
+		$this->load->model('user_model');
+		$result = $this->user_model->update($id,$update_data);
+		if ($result == true)
+		{
+			echo "Success";	
+		} 
+		else
+		{
+			echo "Fail";
+		}
 
 	}
 

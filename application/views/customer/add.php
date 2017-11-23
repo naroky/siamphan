@@ -8,7 +8,7 @@ $(document).ready(function() {
     //$("#loading_page").show();
     var saveURL = "<?php echo base_url();?>Customer/save/?method=api";
     var postData = $(this).serializeArray();
-    alert(saveURL);
+   
     $.ajax(
     {
       url : saveURL,
@@ -41,7 +41,7 @@ $(document).ready(function() {
 
     if (result == true)
     {
-      alert("save");
+
       $("#ajaxform").submit();      
     } else
     {

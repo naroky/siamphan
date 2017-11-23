@@ -28,7 +28,7 @@
                     <td>&nbsp;<?php echo $row->name?></td>
                     <td>&nbsp;<?php echo $row->code?></td>
                     <td>&nbsp;<?php echo $row->category?></td>
-                    <td>&nbsp;<?php echo $row->status?></td>
+                    <td>&nbsp;<?php echo ($row->status == 1) ? "Enabled" : "Disabled" ?></td>
                     <td>&nbsp;<?php echo $row->sell_price?></td>
                     <td>&nbsp;<?php echo $row->unit?></td>
                     <td class="text-primary"> 

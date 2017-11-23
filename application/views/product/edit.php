@@ -84,13 +84,35 @@ $(document).ready(function() {
                           <div class="col-md-5">
                               <div class="form-group label-floating">
                                   <label class="control-label">Category</label>
+      <?php 
+                                    echo form_dropdown('category', $cate_data, $row->category,'id="category" name="category" class="form-control"');
+
+                                  ?>                                  
                                   <input id="category" name="category" type="text" class="form-control" value="<?php echo $row->category?>">
                               </div>
                           </div>
                           <div class="col-md-5">
                               <div class="form-group label-floating">
                                   <label class="control-label">Status</label>
-                                  <input id="status" name="status" type="text" class="form-control" value="<?php echo $row->status?>">
+                                  <?php 
+                                    if ($row->status == 1)
+                                    {
+                                      $select1="Selected";
+                                      $select2="";
+                                    }
+                                    else
+                                    {
+                                      $select1="";
+                                      $select2="Selected";
+                                    }
+                                  ?>
+
+                                  <select id="status" name="status" class="form-control">
+                                   <option value="1" <?php echo $select1 ?>>Enable</option>
+                                   <option value="2" <?php echo $select2 ?>>Disable</option>
+                                  </select>
+
+                                
                               </div>
                           </div>                              
 

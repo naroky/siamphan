@@ -19,7 +19,7 @@ $(document).ready(function() {
         //$("#simple-msg").html('<div class="alert alert-info">Success</div>');
         alert(textStatus+":"+data);
         //$("#loading_page").hide();
-        //window.location.replace("<?php echo base_url()?>Product");
+        window.location.replace("<?php echo base_url()?>Product");
 
       },
       error: function(jqXHR, textStatus, errorThrown)
@@ -92,7 +92,10 @@ $(document).ready(function() {
                           <div class="col-md-5">
                               <div class="form-group label-floating">
                                   <label class="control-label">Status</label>
-                                  <input id="status" name="status" type="text" class="form-control">
+                                  <select id="status" name="status" class="form-control">
+                                   <option value="1">Enable</option>
+                                   <option value="2">Disable</option>
+                                  </select>
                               </div>
                           </div>                              
 
@@ -116,7 +119,7 @@ $(document).ready(function() {
                      
 
 
-                      <button id="btn-save" type="submit" class="btn btn-primary pull-right">Update Profile</button>
+                      <button id="btn-save" type="button" class="btn btn-primary pull-right">Update Profile</button>
                       <button id="cancel" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                       <div class="clearfix"></div>
                   </form>
