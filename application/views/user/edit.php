@@ -19,7 +19,7 @@ $(document).ready(function() {
         //$("#simple-msg").html('<div class="alert alert-info">Success</div>');
         alert(textStatus+":"+data);
         //$("#loading_page").hide();
-        window.location.replace("<?php echo base_url()?>Category");
+        //window.location.replace("<?php echo base_url()?>User");
 
       },
       error: function(jqXHR, textStatus, errorThrown)
@@ -37,7 +37,7 @@ $(document).ready(function() {
   {
     
     result = $("#ajaxform").validationEngine("validate");
-    saveURL = "<?php echo base_url();?>Category/save/?method=api";
+    saveURL = "<?php echo base_url();?>User/update/?method=api";
     if (result == true)
     {
       alert("save");
@@ -59,9 +59,9 @@ $(document).ready(function() {
     </div>
     <div class="card-content table-responsive">
               <div class="card-content">
-                  <form id="ajaxform" name="form-add" method="post" action="<?php echo base_url();?>Category/save/?method=api">
+                  <form id="ajaxform" name="form-add" method="post" action="">
                     <?php
-                    foreach ($prodinfo as $row) {
+                    foreach ($userinfo as $row) {
                     ?>
                     <div class="row">
                         <div class="col-md-5">
@@ -92,8 +92,8 @@ $(document).ready(function() {
                             </div>
                         </div>
                     </div>
-                    <input type="hidden" name="id" id="id" value=""> 
-                    <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
+                    <input type="hidden" name="id" id="id" value="<?php echo $row->id?>"> 
+                    <button id="btn-save" type="button" class="btn btn-primary pull-right">Update Profile</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     <div class="clearfix"></div>
                     <?php }?>

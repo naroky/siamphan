@@ -17,8 +17,22 @@ class Login extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
+
+	function __construct()
+	{
+		parent::__construct();
+	
+		$this->load->helper('url');
+		//$this->load->helper('form');
+		//$this->load->library('email');
+		//$this->load->library('pagination');
+		//$this->load->helper('common');
+	}
+
+
 	public function index()
 	{
+
 		$this->load->view('login');
 
 	}
@@ -32,19 +46,21 @@ class Login extends CI_Controller {
 		$password = $this->input->post("password");
 		
 		$password_encode = MD5($password);
-
+		echo "user:".$username."<br/>";
 		$result = $this->User_model->getUserAuthen($username);
 
 		if (count($result) > 0 )
 		{
 			$user = $result[0];
+			echo "pass:".$user->password."<br/>";
+			echo "input_pass:".$password_encode."<br/>";
 			if ($user->password == $password_encode)
 			{
 				echo "Login Success";
 
 				$last_access = date("Y-m-d H:i:s");
 				$session_array=array(
-				'id'=>(string)$user->ID,
+				'id'=>(string)$user->id,
 				'username'=>(string)$user->username,
 				'email'=>(string)$user->email,
 				'status'=>(string)$user->status,
@@ -58,6 +74,7 @@ class Login extends CI_Controller {
 			else
 			{
 				// 4011 Unauthorized:Password miss match
+				$this->session->set_userdata('login',"");
 				redirect('Login?code=4011');
 				//echo "Login Fail";	
 			}
@@ -66,6 +83,7 @@ class Login extends CI_Controller {
 		else
 		{
 			// 4012 Invalid Username
+			$this->session->set_userdata('login',"");			
 			redirect('Login?code=4012');	
 		}
 

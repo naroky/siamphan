@@ -2,7 +2,7 @@
 /**
 * User_model
 */
-class Product_model extends CI_Model
+class Sellorder_model extends CI_Model
 {
 
 	function __construct()
@@ -14,7 +14,7 @@ class Product_model extends CI_Model
 	function lists()
 	{
 		$this->db->select('*');
-		$this->db->from('siamphan_product');
+		$this->db->from('siamphan_sellorder');
 		$q=$this->db->get();
 		return $q->result();		
 	}
@@ -23,15 +23,32 @@ class Product_model extends CI_Model
 	{
 		$id = $data["id"];
 		$this->db->select('*');
-		$this->db->from('siamphan_product');
+		$this->db->from('siamphan_sellorder');
 		$this->db->where("id","$id");
 		$q=$this->db->get();
 		return $q->result();		
 	}
 
-	function save($data)
+	function savehdorder($data)
 	{
-		$result = $this->db->insert('siamphan_product', $data); 
+		$result = $this->db->insert('siamphan_sellorder', $data); 
+		if ($result  == true)
+		{
+			$insert_id = $this->db->insert_id();
+			return $insert_id;
+		}
+		else
+		{
+			return false;
+		}
+		
+
+	}
+
+
+	function savedetail($data)
+	{
+		$result = $this->db->insert('siamphan_orderdetail', $data); 
 		return $result;
 	}
 
@@ -40,7 +57,7 @@ class Product_model extends CI_Model
 		echo "id:".$id."<br/>";
 		var_dump($data);
 		$this->db->where('id', $id);
-		$result = $this->db->update('siamphan_product', $data);
+		$result = $this->db->update('siamphan_sellorder', $data);
 		var_dump($result);
 		return $result;
 	}
@@ -49,20 +66,10 @@ class Product_model extends CI_Model
 	{
 
 		$this->db->where('id', $id);
-		$result = $this->db->delete('siamphan_product');
+		$result = $this->db->delete('siamphan_sellorder');
 		return $result;
 	}
 
-	function prod_searchname($data)
-	{
-		$key = $data["key"];
-
-		$this->db->select('*');
-		$this->db->from('siamphan_product');
-		$this->db->where("name LIKE '$key%'");	
-		$q=$this->db->get();
-		return $q->result();			
-	}
 
 
 }

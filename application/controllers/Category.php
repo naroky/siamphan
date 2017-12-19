@@ -25,7 +25,7 @@ class Category extends CI_Controller {
 		$lastid = 0;
 		if(!$this->session->userdata('login'))
 		{
-			redirect('login');
+			redirect('Login');
 			exit();
 		}
 		else

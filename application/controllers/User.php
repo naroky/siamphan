@@ -25,7 +25,7 @@ class User extends CI_Controller {
 		$lastid = 0;
 		if(!$this->session->userdata('login'))
 		{
-			redirect('login');
+			redirect('Login');
 			exit();
 		}
 		else
@@ -82,38 +82,64 @@ class User extends CI_Controller {
 	public function save()
 	{
 		$data = $_REQUEST;
-		$insert_data = array(
-	        'name' => urldecode($data['name']) ,
-	        'status' => $data['status'],
-			'lastupdate' => date("Y-m-d H:i:s")
-		);
-		
-		$this->load->model('user_model');
-		$result = $this->user_model->save($insert_data);
-		if ($result == true)
+/*
+array(5) {
+  ["method"]=>
+  string(3) "api"
+  ["username"]=>
+  string(5) "aaaaa"
+  ["email"]=>
+  string(15) "aaaaa@admin.com"
+  ["password"]=>
+  string(4) "1234"
+  ["re_password"]=>
+  string(4) "1234"
+}
+
+*/
+		if ($data['password'] == $data['re_password'])
 		{
-			echo "Success";	
-		} 
+			$insert_data = array(
+		        'username' => urldecode($data['username']) ,
+		        'email' => urldecode($data['email']) ,
+		        'password' => urldecode(md5($data['password'])) ,
+		        'status' => urldecode($data['status']) ,
+		        'level' => $data['level'],
+				'lastlogin' => date("Y-m-d H:i:s")
+			);
+			
+			$this->load->model('User_model');
+			$result = $this->User_model->save($insert_data);
+			if ($result == true)
+			{
+				echo "Success";	
+			} 
+			else
+			{
+				echo "Fail";
+			}		
+
+		}
 		else
 		{
 			echo "Fail";
-		}		
+		}
 	}
 
 	public function del($id)
 	{
 
-		$this->load->model('user_model');
-		$result = $this->user_model->delete($id);
+		$this->load->model('User_model');
+		$result = $this->User_model->delete($id);
 
 	}
 
 	public function edit()
 	{
 		$data["id"]=$this->input->get("id");
-		$this->load->model('user_model');
-		$data["cateinfo"]  = $this->user_model->getuser($data);
-		
+		$this->load->model('User_model');
+		$data["userinfo"]  = $this->User_model->getuser($data);
+		var_dump($data["userinfo"]);
 		// Display
 		$this->load->view('header',$this->header);
 		$this->load->view('user/edit',$data);
@@ -127,14 +153,16 @@ class User extends CI_Controller {
 		$data = $_REQUEST;
 		//$id = $this->input->post('id', TRUE);
 		$id = $data["id"];
-
 		$update_data = array(
-	        'name' => $data["name"],
-	        'status' => $this->input->post('status', TRUE),
-			'lastupdate' => date("Y-m-d H:i:s")
+	        'username' => urldecode($data['username']) ,
+	        'email' => urldecode($data['email']) ,
+	        'status' => urldecode($data['status']) ,
+	        'level' => $data['level'],
+			'lastlogin' => date("Y-m-d H:i:s")
 		);
-		$this->load->model('user_model');
-		$result = $this->user_model->update($id,$update_data);
+		var_dump($update_data);
+		$this->load->model('User_model');
+		$result = $this->User_model->update($id,$update_data);
 		if ($result == true)
 		{
 			echo "Success";	

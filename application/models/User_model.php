@@ -24,7 +24,7 @@ class User_model extends CI_Model
 	{
 		$this->db->select('*');
 		$this->db->from('siamphan_user');
-		$this->db->where('username <=',$username);
+		$this->db->where('username =',$username);
 		$q=$this->db->get();
 		return $q->result();		
 		
@@ -43,7 +43,7 @@ class User_model extends CI_Model
 
 	function save($data)
 	{
-		$result = $this->db->insert('siamphan_customer', $data); 
+		$result = $this->db->insert('siamphan_user', $data); 
 		return $result;
 	}
 
@@ -51,8 +51,8 @@ class User_model extends CI_Model
 	{
 
 		$this->db->where('id', $id);
-		$result = $this->db->update('siamphan_customer', $data);
-		
+		$result = $this->db->update('siamphan_user', $data);
+		echo "result:".$result."<br/>";
 		return $result;
 	}
 	
@@ -60,7 +60,7 @@ class User_model extends CI_Model
 	{
 
 		$this->db->where('id', $id);
-		$result = $this->db->delete('siamphan_customer');
+		$result = $this->db->delete('siamphan_user');
 		return $result;
 	}	
 

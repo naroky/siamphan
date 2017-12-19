@@ -52,7 +52,16 @@ class Customer_model extends CI_Model
 		return $result;
 	}
 
+	function cust_searchname($data)
+	{
+		$key = $data["key"];
 
+		$this->db->select('*');
+		$this->db->from('siamphan_customer');
+		$this->db->where("thainame LIKE '$key%'");	
+		$q=$this->db->get();
+		return $q->result();			
+	}
 
 }
 ?>

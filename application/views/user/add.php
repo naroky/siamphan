@@ -64,13 +64,13 @@ $(document).ready(function() {
                         <div class="col-md-5">
                             <div class="form-group label-floating">
                                 <label class="control-label">Username</label>
-                                <input type="text" class="form-control" >
+                                <input id="username" name="username" type="text" class="form-control" >
                             </div>
                         </div>
                         <div class="col-md-5">
                             <div class="form-group label-floating">
                                 <label class="control-label">Email address</label>
-                                <input type="email" class="form-control">
+                                <input id="email" name="email" type="email" class="form-control">
                             </div>
                         </div>
                     </div>
@@ -93,13 +93,26 @@ $(document).ready(function() {
                         <div class="col-md-3">
                             <div class="form-group label-floating">
                                 <label class="control-label">Status</label>
-                                <input type="text" class="form-control">
+
+                                <select id="status" name="status" class="form-control">
+                                  <option value="1">Active</option>
+                                  <option value="2">InActive</option>
+                                </select>
+
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group label-floating">
                                 <label class="control-label">Level</label>
-                                <input type="text" class="form-control">
+                                <select id="level" name="level" class="form-control">
+                                  <option value="0">Admin</option>
+                                  <option value="1">Super User</option>
+                                  <option value="2">Sell</option>
+                                  <option value="3">Order</option>
+                                  <option value="4">Packaging</option>
+                                  <option value="5">Delivery</option>
+                                </select>                                
+                                
                             </div>
                         </div>
                     </div>

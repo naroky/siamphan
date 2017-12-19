@@ -187,7 +187,7 @@ $(document).ready(function() {
                       <!-- Content -->
 
                       <input id="id" name="id" type="hidden" value="<?php echo $row->id?>">
-                      <button id="btn-save" type="submit" class="btn btn-primary pull-right">Update Profile</button>
+                      <button id="btn-save" type="button" class="btn btn-primary pull-right">Update Profile</button>
                       <button id="cancel" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                       <div class="clearfix"></div>
                       <?php

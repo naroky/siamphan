@@ -180,7 +180,7 @@ $(document).ready(function() {
                       <!-- Content -->
 
 
-                      <button id="btn-save" type="submit" class="btn btn-primary pull-right">Update Profile</button>
+                      <button id="btn-save" type="button" class="btn btn-primary pull-right">Update Profile</button>
                       <button id="cancel" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                       <div class="clearfix"></div>
                   </form>

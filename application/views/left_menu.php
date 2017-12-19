@@ -6,33 +6,33 @@
         </a>
     </li>
     <li>
-        <a href="<?php base_url()?>User">
+        <a href="<?php echo base_url()?>User">
             <i class="material-icons">person</i>
             <p>Users</p>
         </a>
     </li>
     <li>
-        <a href="<?php base_url()?>Customer">
+        <a href="<?php echo base_url()?>Customer">
             <i class="material-icons">content_paste</i>
             <p>Customer</p>
         </a>
     </li>
     <li>
-        <a href="<?php base_url()?>Product">
+        <a href="<?php echo base_url()?>Product">
             <i class="material-icons">library_books</i>
             <p>Product</p>
         </a>
     </li>
     <li>
-        <a href="<?php base_url()?>Category">
+        <a href="<?php echo base_url()?>Category">
             <i class="material-icons">library_books</i>
             <p>Category</p>
         </a>
     </li>    
     <li>
-        <a href="./icons.html">
+        <a href="<?php echo base_url()?>Sellorder">
             <i class="material-icons">bubble_chart</i>
-            <p>Orders</p>
+            <p>Sell Order</p>
         </a>
     </li>
     <li>

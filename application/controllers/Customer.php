@@ -23,20 +23,30 @@ class Customer extends CI_Controller {
 		parent::__construct();
 		$header = array();
 		$lastid = 0;
-		if(!$this->session->userdata('login'))
+		if ($this->input->get('method') == "api")
 		{
-			redirect('login');
-			exit();
+			// API
+
+
 		}
 		else
 		{
-			$this->header['session']=$this->session->userdata('login');
-			$data['title'] = 'Mobile Portal Administation : Login';
-			$data['project'] = 'Mobile Portal';
 
-			//$this->load->view('header',$data);
-			//$this->load->model('chart_model');
-			//$this->config->load('time_config',TRUE);
+			if(!$this->session->userdata('login'))
+			{
+				redirect('Login');
+				exit();
+			}
+			else
+			{
+				$this->header['session']=$this->session->userdata('login');
+				$data['title'] = 'Mobile Portal Administation : Login';
+				$data['project'] = 'Mobile Portal';
+
+				//$this->load->view('header',$data);
+				//$this->load->model('chart_model');
+				//$this->config->load('time_config',TRUE);
+			}
 		}
 
 		$this->menu["menu_active"] = "Home";
@@ -82,23 +92,25 @@ class Customer extends CI_Controller {
 		$insert_data = array(
 	        'branchcode' => $this->input->post('branchcode', TRUE),
 	        'customertype' => $this->input->post('customertype', TRUE),
-	        'thainame' => $this->input->post('thainame', TRUE),
-		    'thaifullname' => $this->input->post('thaifullname', TRUE),
-			'engname' => $this->input->post('engname', TRUE),
-			'engfullname' => $this->input->post('engfullname', TRUE),
-			'address' => $this->input->post('address', TRUE),
-			'province' => $this->input->post('province', TRUE),
+	        'thainame' => urldecode($this->input->post('thainame', TRUE)),
+		    'thaifullname' => urldecode($this->input->post('thaifullname', TRUE)),
+			'engname' => urldecode($this->input->post('engname', TRUE)),
+			'engfullname' => urldecode($this->input->post('engfullname', TRUE)),
+			'address' => urldecode($this->input->post('address', TRUE)),
+			'province' => urldecode($this->input->post('province', TRUE)),
 			'zipcode' => $this->input->post('zipcode', TRUE),
 			'phone' => $this->input->post('phone', TRUE),
 			'fax' => $this->input->post('fax', TRUE),
 			'mobile' => $this->input->post('mobile', TRUE),
 			'email' => $this->input->post('email', TRUE),
-			'peopleid' => $this->input->post('peopleid', TRUE),
+			'peopleid' => urldecode($this->input->post('peopleid', TRUE)),
 			'birthdate' => $this->input->post('birthdate', TRUE),
 			'sex' => $this->input->post('sex', TRUE),
 			'lastupdate' => date("Y-m-d H:i:s")
 		);
 		
+		var_dump($insert_data);
+
 		$this->load->model('customer_model');
 		$result = $this->customer_model->save($insert_data);
 		if ($result == true)
@@ -165,6 +177,18 @@ class Customer extends CI_Controller {
 		}
 		
 	}
+	public function search_1chr()
+	{
+
+		$data = "";
+		$this->load->model('Customer_model');
+		$data["key"] = $this->input->get('char');
+		$data["customer"] = $this->Customer_model->cust_searchname($data);
+		$this->load->view('customer/search_box',$data);
+
+
+
+	}	
 		
 }
 /* End of file welcome.php */

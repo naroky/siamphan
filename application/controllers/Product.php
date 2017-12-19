@@ -25,7 +25,7 @@ class Product extends CI_Controller {
 		$lastid = 0;
 		if(!$this->session->userdata('login'))
 		{
-			redirect('login');
+			redirect('Login');
 			exit();
 		}
 		else
@@ -88,7 +88,7 @@ class Product extends CI_Controller {
 	public function save()
 	{
 		$insert_data = array(
-	        'name' => $this->input->post('name', TRUE),
+	        'name' =>  $this->input->post('name', TRUE),
 	        'code' => $this->input->post('code', TRUE),
 	        'category' => $this->input->post('category', TRUE),
 		    'status' => $this->input->post('status', TRUE),
@@ -160,7 +160,18 @@ class Product extends CI_Controller {
 		}
 
 	}
-		
+	public function search_1chr()
+	{
+
+		$data = "";
+		$this->load->model('Product_model');
+		$data["key"] = $this->input->get('char');
+		$data["product"] = $this->Product_model->prod_searchname($data);
+		$this->load->view('product/search_box',$data);
+
+
+
+	}			
 }
 /* End of file welcome.php */
 /* Location: ./application/controllers/welcome.php */
