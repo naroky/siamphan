@@ -35,7 +35,7 @@
                     <td>&nbsp;<?php echo $row->total_price?></td>
                     <td>&nbsp;<?php echo ($row->status == 1) ? "Enabled" : "Disabled" ?></td>
                     <td class="text-primary"> 
-                    <a href="<?php echo base_url()?>Product/edit?id=<?php echo $row->id?>"><i class="material-icons">border_color</i></a>&nbsp;&nbsp;&nbsp;
+                    <a href="<?php echo base_url()?>Sellorder/edit?id=<?php echo $row->id?>"><i class="material-icons">border_color</i></a>&nbsp;&nbsp;&nbsp;
                     
                     <a id="btn-del<?php echo $i?>" href="#"><i class="material-icons">clear</i></a>&nbsp;&nbsp;&nbsp;
                     
@@ -43,7 +43,7 @@
                     $("#btn-del<?php echo $i?>").click(function(){
                         if(confirm("Are you sure you want to delete this?")){
 
-                            $.get( "<?php echo base_url()?>Product/del/<?php echo $row->id?>", function( data ) {
+                            $.get( "<?php echo base_url()?>Sellorder/del/<?php echo $row->id?>", function( data ) {
                                 location.reload();
                                 //e.preventDefault(); //STOP default action
                             });
@@ -53,6 +53,8 @@
                         }
                     });
                     </script>                     
+                    <a href="<?php echo base_url()?>Sellorder/printOrder?id=<?php echo $row->id?>"><i class="material-icons">print</i></a>&nbsp;&nbsp;&nbsp;
+                                        
                     </td>
                 </tr>
                 <?php $i++; }?>

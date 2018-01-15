@@ -2,7 +2,7 @@
   <?php 
   foreach ($customer as $row) {
 ?>
-  <li><a href="#" onclick="Cust_select(<?php echo $row->id?>,'<?php echo $row->thainame?>','<?php echo $row->mobile?>','<?php echo $row->address?>')"><?php echo $row->thainame?></a></li>
+  <li><a href="#" onclick="Cust_select(<?php echo $row->id?>,'<?php echo $row->thainame?>','<?php echo $row->mobile?>','<?php echo $row->address." ".$row->province." ".$row->zipcode."<br/>Tel. ".$row->phone." Mobile ".$row->mobile. " Fax ".$row->fax ?>')"><?php echo $row->thainame?></a></li>
 
 <?php
   }

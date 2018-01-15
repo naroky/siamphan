@@ -36,16 +36,16 @@ $(document).ready(function() {
   $("#btn-save").click(function()
   {
     
-    result = $("#ajaxform").validationEngine("validate");
+    //result = $("#ajaxform").validationEngine("validate");
     saveURL = "<?php echo base_url();?>Category/save/?method=api";
-    if (result == true)
-    {
+/*    if (result == true)
+    {*/
       alert("save");
       $("#ajaxform").submit();      
-    } else
+/*    } else
     {
       alert("fail");
-    }
+    }*/
 
   });
 });

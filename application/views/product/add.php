@@ -36,17 +36,18 @@ $(document).ready(function() {
 
   $("#btn-save").click(function()
   {
-    
+    /*
     result = $("#ajaxform").validationEngine("validate");
 
     if (result == true)
-    {
+    {*/
       alert("save");
       $("#ajaxform").submit();      
+    /*
     } else
     {
       alert("fail");
-    }
+    }*/
 
   });
 });

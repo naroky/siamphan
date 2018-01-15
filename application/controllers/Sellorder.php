@@ -23,29 +23,39 @@ class Sellorder extends CI_Controller {
 		parent::__construct();
 		$header = array();
 		$lastid = 0;
-		if(!$this->session->userdata('login'))
+		if ($this->input->get('method') == "api")
 		{
-			redirect('Login');
-			exit();
+			// API
+
+
 		}
 		else
 		{
-			$this->header['session']=$this->session->userdata('login');
-			$data['title'] = 'Mobile Portal Administation : Login';
-			$data['project'] = 'Mobile Portal';
 
-			//$this->load->view('header',$data);
-			//$this->load->model('chart_model');
-			//$this->config->load('time_config',TRUE);
+			if(!$this->session->userdata('login'))
+			{
+				redirect('Login');
+				exit();
+			}
+			else
+			{
+				$this->header['session']=$this->session->userdata('login');
+				$data['title'] = 'Mobile Portal Administation : Login';
+				$data['project'] = 'Mobile Portal';
+
+				//$this->load->view('header',$data);
+				//$this->load->model('chart_model');
+				//$this->config->load('time_config',TRUE);
+			}
+
+			$this->menu["menu_active"] = "Home";
+			//$this->load->model("cp_model");
+			$this->load->helper('url');
+			$this->load->helper('math');
+			//$this->load->library('email');
+			//$this->load->library('pagination');
+			//$this->load->helper('common');
 		}
-
-		$this->menu["menu_active"] = "Home";
-		//$this->load->model("cp_model");
-		$this->load->helper('url');
-		//$this->load->helper('form');
-		//$this->load->library('email');
-		//$this->load->library('pagination');
-		//$this->load->helper('common');
 	}	
 
 	public function index()
@@ -174,8 +184,13 @@ order_id:10
 		}		
 	}
 
-	function loadOrdetail($order_id)
+	function loadOrdetail()
 	{
+		$data["order_id"] = $this->input->get('id');
+		$this->load->model('Sellorder_model');
+		$result = $this->Sellorder_model->detail_lists($data);
+		$data["result"] = $result;
+		$this->load->view('sellorder/orderlist_table',$data);
 
 	}
 
@@ -183,22 +198,40 @@ order_id:10
 	public function del($id)
 	{
 
-		$this->load->model('user_model');
-		$result = $this->user_model->delete($id);
+		$this->load->model('Sellorder_model');
+		$result = $this->Sellorder_model->delSellorder($id);
+		if ($result == true)
+		{
+			$result = $this->Sellorder_model->delOrdDetail($id);
+
+		}
 
 	}
 
 	public function edit()
 	{
+		$data["order_id"]=$this->input->get("id");
 		$data["id"]=$this->input->get("id");
-		$this->load->model('user_model');
-		$data["userinfo"]  = $this->user_model->getuser($data);
-		var_dump($data["userinfo"]);
+		$this->load->model('Sellorder_model');
+		$data["orderInfo"]  = $this->Sellorder_model->getSellorder($data);
+		$data["orderList"]  = $this->Sellorder_model->detail_lists($data);
+		
 		// Display
 		$this->load->view('header',$this->header);
-		$this->load->view('user/edit',$data);
+		$this->load->view('sellorder/edit',$data);
 		$this->load->view('footer');		
 
+	}
+
+	public function printOrder()
+	{
+		$data["order_id"]=$this->input->get("id");
+		$data["id"]=$this->input->get("id");
+		$this->load->model('Sellorder_model');
+		$data["orderInfo"]  = $this->Sellorder_model->getSellorder($data);
+		$data["orderList"]  = $this->Sellorder_model->detail_lists($data);
+		// Display
+		$this->load->view('sellorder/print',$data);
 	}
 
 
@@ -228,6 +261,13 @@ order_id:10
 
 	}
 
+	function delordItem()
+	{
+		$data = $_REQUEST;
+		$id = $data["id"];		
+		$this->load->model('Sellorder_model');
+		$result = $this->Sellorder_model->delordItem($id);	
+	}
 
 		
 }

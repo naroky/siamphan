@@ -42,11 +42,11 @@
     <script src="<?php echo base_url()?>assets/js/demo.js"></script>
 
     <!-- Validation -->
-    <link rel="stylesheet" href="<?php echo base_url();?>assets/validation/css/validationEngine.jquery.css" type="text/css"  charset="utf-8"/>
-    <script src="<?php echo base_url();?>assets/validation/js/languages/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8">
+    <!--link rel="stylesheet" href="<?php echo base_url();?>assets/validation/css/validationEngine.jquery.css" type="text/css"  charset="utf-8"/-->
+    <!--script src="<?php echo base_url();?>assets/validation/js/languages/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"-
     </script>
     <script src="<?php echo base_url();?>assets/validation/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8">
-    </script>
+    </script-->
 
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" type="text/javascript" charset="utf-8">
     </script>

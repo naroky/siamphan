@@ -19,7 +19,18 @@ class Sellorder_model extends CI_Model
 		return $q->result();		
 	}
 
-	function getprod($data)
+	function detail_lists($data)
+	{
+		$id = $data["order_id"];		
+		$this->db->select('*');
+		$this->db->from('siamphan_orderdetail');
+		$this->db->where("sellorder_id","$id");		
+		$q=$this->db->get();
+		return $q->result();		
+	}	
+
+
+	function getSellorder($data)
 	{
 		$id = $data["id"];
 		$this->db->select('*');
@@ -45,9 +56,9 @@ class Sellorder_model extends CI_Model
 
 	}
 
-
 	function savedetail($data)
 	{
+		
 		$result = $this->db->insert('siamphan_orderdetail', $data); 
 		return $result;
 	}
@@ -62,7 +73,7 @@ class Sellorder_model extends CI_Model
 		return $result;
 	}
 	
-	function delete($id)
+	function delSellorder($id)
 	{
 
 		$this->db->where('id', $id);
@@ -70,6 +81,22 @@ class Sellorder_model extends CI_Model
 		return $result;
 	}
 
+
+	function delOrdDetail($id)
+	{
+
+		$this->db->where('order_id', $id);
+		$result = $this->db->delete('siamphan_orderdetail');
+		return $result;
+	}
+
+	function delordItem($id)
+	{
+		$this->db->where('id', $id);
+		$result = $this->db->delete('siamphan_orderdetail');
+
+		return $result;
+	}
 
 
 }

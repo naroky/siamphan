@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" type="text/css"  charset="utf-8"/>
 <script>
 $(document).ready(function() {
   var CUST_SEARCH_BOX = "<?php echo base_url();?>customer/search_1chr/?method=api";
@@ -23,7 +22,7 @@ $(document).ready(function() {
           //$("#simple-msg").html('<div class="alert alert-info">Success</div>');
           if (data != "false")
           {
-            alert(textStatus+":"+data);
+            alert(textStatus);
             $('#order_id').val(data);
 
           }
@@ -85,19 +84,21 @@ $(document).ready(function() {
 
   $("#btn-cust-save").click(function()
   {
-    result = $("#ajaxform").validationEngine("validate");
+    //result = $("#ajaxform").validationEngine("validate");
     saveURL = "<?php echo base_url();?>Sellorder/savehdOrder/?method=api";
 
-
+    /*
     if (result == true)
     {
+      */
       alert("save");
       $("#ajaxform").submit();      
+    /*
     } else
     {
       alert("fail");
     }
-
+    */
 
   });
 
@@ -147,8 +148,8 @@ $(document).ready(function() {
       data : postData,
       success:function(data, textStatus, jqXHR)
       {
-
         alert(textStatus+":"+data);
+        $('#ordDetail').load("<?php echo base_url();?>Sellorder/loadOrdetail/?method=api&id="+$('#order_id').val());
       },
       error: function(jqXHR, textStatus, errorThrown)
       {
@@ -163,21 +164,31 @@ $(document).ready(function() {
 
   $("#btn-prod-add").click(function()
   {
-    result = $("#frmOrdDetail").validationEngine("validate");
+    //result = $("#frmOrdDetail").validationEngine("validate");
     saveURL = "<?php echo base_url();?>Sellorder/saveOrderDetail/?method=api";
 
-
+    /*
     if (result == true)
     {
+    */
       alert("save");
       $("#frmOrdDetail").submit();      
+    /*
     } else
     {
       alert("fail");
     }
-
+    */
 
   });
+
+    $('#orderdtail_list').DataTable( {
+        "paging":   false,
+        "ordering": false,
+        "info":     false
+    } );
+
+
 
 });
 
@@ -242,7 +253,7 @@ $(document).ready(function() {
             <div class="col-md-12">
                 <div class="form-group label-floating">
                     <label class="control-label">Search for name..:</label>
-                    <input type="text" id="customer_search" name="customer_search"  class="form-control">
+                    <input type="text" id="customer_search" name="customer_search"  class="form-control" value=" ">
                     <div id="search_cust_box">
                     </div>
                 </div>
@@ -251,25 +262,25 @@ $(document).ready(function() {
              <div class="col-md-5">
                 <div class="form-group label-floating">
                     <label class="control-label">Name</label>
-                    <input id="cust_name" name="cust_name" type="text" class="form-control">
+                    <input id="cust_name" name="cust_name" type="text" class="form-control" value=" ">
                 </div>
             </div>         
             <div class="col-md-5">
                 <div class="form-group label-floating">
                     <label class="control-label">Address</label>
-                    <input id="cust_address" name="cust_address" type="text" class="form-control">
+                    <input id="cust_address" name="cust_address" type="text" class="form-control"  value=" ">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group label-floating">
                     <label class="control-label">Due Date</label>
-                    <input id="duedate" name="duedate" type="text" class="datepicker form-control">
+                    <input id="duedate" name="duedate" type="text" class="datepicker form-control"  value=" ">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group label-floating">
                     <label class="control-label">Send Date</label>
-                    <input id="senddate" name="senddate" type="text" class="datepicker form-control">
+                    <input id="senddate" name="senddate" type="text" class="datepicker form-control"  value=" ">
                 </div>
             </div>          
             <div class="col-md-12">
@@ -365,59 +376,9 @@ $(document).ready(function() {
 <div class="col-md-7">
   <div class="card">
     <div class="card-content table-responsive">
-    <table id="ordDetail" class="table table-hover">
-      <thead>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Code</th>
-          <th>Sell Price</th>
-          <th>Unit</th>
-      </thead>
-      <tbody>
-          <tr>
-              <td>1</td>
-              <td>Dakota Rice</td>
-              <td>$36,738</td>
-              <td>Niger</td>
-              <td>Oud-Turnhout</td>
-          </tr>
-          <tr>
-              <td>2</td>
-              <td>Minerva Hooper</td>
-              <td>$23,789</td>
-              <td>Curaçao</td>
-              <td>Sinaai-Waas</td>
-          </tr>
-          <tr>
-              <td>3</td>
-              <td>Sage Rodriguez</td>
-              <td>$56,142</td>
-              <td>Netherlands</td>
-              <td>Baileux</td>
-          </tr>
-          <tr>
-              <td>4</td>
-              <td>Philip Chaney</td>
-              <td>$38,735</td>
-              <td>Korea, South</td>
-              <td>Overland Park</td>
-          </tr>
-          <tr>
-              <td>5</td>
-              <td>Doris Greene</td>
-              <td>$63,542</td>
-              <td>Malawi</td>
-              <td>Feldkirchen in Kärnten</td>
-          </tr>
-          <tr>
-              <td>6</td>
-              <td>Mason Porter</td>
-              <td>$78,615</td>
-              <td>Chile</td>
-              <td>Gloucester</td>
-          </tr>
-      </tbody>
-    </table>
+      <div id="ordDetail">
+     
+      </div>
     </div>
   </div>
 </div>

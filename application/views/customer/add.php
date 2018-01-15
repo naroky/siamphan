@@ -37,17 +37,17 @@ $(document).ready(function() {
   $("#btn-save").click(function()
   {
     
-    result = $("#ajaxform").validationEngine("validate");
-
+    //result = $("#ajaxform").validationEngine("validate");
+/*
     if (result == true)
     {
-
+*/
       $("#ajaxform").submit();      
-    } else
+ /*   } else
     {
       alert("fail");
     }
-
+*/
   });
 });
  
@@ -67,13 +67,13 @@ $(document).ready(function() {
                           <div class="col-md-5">
                               <div class="form-group label-floating">
                                   <label class="control-label">BrandCode</label>
-                                  <input id="branchcode" name="branchcode" type="text" class="form-control validate[required]" >
+                                  <input id="branchcode" name="branchcode" type="text" class="form-control validate[required]"  value=" ">
                               </div>
                           </div>
                           <div class="col-md-5">
                               <div class="form-group label-floating">
                                   <label class="control-label">Customer Type</label>
-                                  <input id="customertype" name="customertype" type="text" class="form-control validate[required]">
+                                  <input id="customertype" name="customertype" type="text" class="form-control validate[required]" value=" ">
                               </div>
                           </div>
                       </div>
@@ -81,13 +81,13 @@ $(document).ready(function() {
                           <div class="col-md-5">
                               <div class="form-group label-floating">
                                   <label class="control-label">Thai Name</label>
-                                  <input id="thainame" name="thainame" type="text" class="form-control validate[required]">
+                                  <input id="thainame" name="thainame" type="text" class="form-control validate[required]" value=" ">
                               </div>
                           </div>
                           <div class="col-md-5">
                               <div class="form-group label-floating">
                                   <label class="control-label">Thai FullName</label>
-                                  <input id="thaifullname" name="thaifullname" type="text" class="form-control validate[required]">
+                                  <input id="thaifullname" name="thaifullname" type="text" class="form-control validate[required]" value=" ">
                               </div>
                           </div>                              
 
@@ -96,13 +96,13 @@ $(document).ready(function() {
                           <div class="col-md-5">
                               <div class="form-group label-floating">
                                   <label class="control-label">Eng Name</label>
-                                  <input id="engname" name="engname" type="text" class="form-control validate[required]">
+                                  <input id="engname" name="engname" type="text" class="form-control validate[required]" value=" ">
                               </div>
                           </div>
                           <div class="col-md-5">
                               <div class="form-group label-floating">
                                   <label class="control-label">Eng FullName</label>
-                                  <input id="engfullname" name="engfullname" type="text" class="form-control validate[required]">
+                                  <input id="engfullname" name="engfullname" type="text" class="form-control validate[required]" value=" ">
                               </div>
                           </div>
                       </div>
@@ -110,13 +110,13 @@ $(document).ready(function() {
                           <div class="col-md-5">
                               <div class="form-group label-floating">
                                   <label class="control-label">Address</label>
-                                  <input id="address" name="address" type="text" class="form-control validate[required]">
+                                  <input id="address" name="address" type="text" class="form-control validate[required]" value=" ">
                               </div>
                           </div>
                           <div class="col-md-5">
                               <div class="form-group label-floating">
                                   <label class="control-label">Province</label>
-                                  <input id="province" name="province" type="text" class="form-control validate[required]">
+                                  <input id="province" name="province" type="text" class="form-control validate[required]" value=" ">
                               </div>
                           </div>
                       </div>
@@ -124,13 +124,13 @@ $(document).ready(function() {
                           <div class="col-md-5">
                               <div class="form-group label-floating">
                                   <label class="control-label">ZipCode</label>
-                                  <input id="zipcode" name="zipcode" type="text" class="form-control validate[required]">
+                                  <input id="zipcode" name="zipcode" type="text" class="form-control validate[required]" value=" ">
                               </div>
                           </div>
                           <div class="col-md-5">
                               <div class="form-group label-floating">
                                   <label class="control-label">Phone</label>
-                                  <input id="phone" name="phone" type="text" class="form-control validate[required]">
+                                  <input id="phone" name="phone" type="text" class="form-control validate[required]" value=" ">
                               </div>
                           </div>
                       </div>
@@ -139,13 +139,13 @@ $(document).ready(function() {
                           <div class="col-md-5">
                               <div class="form-group label-floating">
                                   <label class="control-label">Fax</label>
-                                  <input id="fax" name="fax" type="text" class="form-control validate[required]">
+                                  <input id="fax" name="fax" type="text" class="form-control validate[required]" value=" ">
                               </div>
                           </div>
                           <div class="col-md-5">
                               <div class="form-group label-floating">
                                   <label class="control-label">Mobile</label>
-                                  <input id="mobile" name="mobile" type="text" class="form-control validate[required]">
+                                  <input id="mobile" name="mobile" type="text" class="form-control validate[required]" value=" ">
                               </div>
                           </div>
                       </div>
@@ -153,13 +153,13 @@ $(document).ready(function() {
                           <div class="col-md-5">
                               <div class="form-group label-floating">
                                   <label class="control-label">Email</label>
-                                  <input id="email" name="email" type="text" class="form-control validate[required]">
+                                  <input id="email" name="email" type="text" class="form-control validate[required]" value=" ">
                               </div>
                           </div>
                           <div class="col-md-5">
                               <div class="form-group label-floating">
                                   <label class="control-label">Peopleid</label>
-                                  <input id="peopleid" name="peopleid" type="text" class="form-control validate[required]">
+                                  <input id="peopleid" name="peopleid" type="text" class="form-control validate[required]" value=" ">
                               </div>
                           </div>
                       </div>
@@ -167,13 +167,13 @@ $(document).ready(function() {
                           <div class="col-md-5">
                               <div class="form-group label-floating">
                                   <label class="control-label">Birthdate</label>
-                                  <input id="birthdate" name="birthdate" type="text" class="form-control validate[required]">
+                                  <input id="birthdate" name="birthdate" type="text" class="form-control validate[required]" value=" ">
                               </div>
                           </div>
                           <div class="col-md-5">
                               <div class="form-group label-floating">
                                   <label class="control-label">sex</label>
-                                  <input id="sex" name="sex" type="text" class="form-control validate[required]">
+                                  <input id="sex" name="sex" type="text" class="form-control validate[required]" value=" ">
                               </div>
                           </div>
                       </div>
