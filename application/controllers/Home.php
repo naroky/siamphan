@@ -25,7 +25,7 @@ class Home extends CI_Controller {
 	
 		if(!$this->session->userdata('login'))
 		{
-			redirect('login');
+			redirect('Login');
 			exit();
 		}
 		else
@@ -45,7 +45,6 @@ class Home extends CI_Controller {
 	public function index()
 	{
 		$data = "";
-		
 		$this->load->view('dashboard',$data);
 		
 

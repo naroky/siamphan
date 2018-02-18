@@ -2,7 +2,7 @@
 /**
 * User_model
 */
-class User_model extends CI_Model
+class Category_model extends CI_Model
 {
 
 	function __construct()
@@ -11,31 +11,19 @@ class User_model extends CI_Model
 	
 	}
 
-
 	function lists()
 	{
 		$this->db->select('*');
-		$this->db->from('siamphan_user');
+		$this->db->from('siamphan_category');
 		$q=$this->db->get();
 		return $q->result();		
 	}
 
-	function getUserAuthen($username)
-	{
-		$this->db->select('*');
-		$this->db->from('siamphan_user');
-		$this->db->where('username =',$username);
-		$q=$this->db->get();
-		return $q->result();		
-		
-		
-	}	
-
-	function getuser($data)
+	function getcate($data)
 	{
 		$id = $data["id"];
 		$this->db->select('*');
-		$this->db->from('siamphan_user');
+		$this->db->from('siamphan_category');
 		$this->db->where("id","$id");
 		$q=$this->db->get();
 		return $q->result();		
@@ -43,16 +31,15 @@ class User_model extends CI_Model
 
 	function save($data)
 	{
-		$result = $this->db->insert('siamphan_user', $data); 
+		
+		$result = $this->db->insert('siamphan_category', $data); 
 		return $result;
 	}
 
 	function update($id,$data)
 	{
-
 		$this->db->where('id', $id);
-		$result = $this->db->update('siamphan_user', $data);
-		echo "result:".$result."<br/>";
+		$result = $this->db->update('siamphan_category', $data);
 		return $result;
 	}
 	
@@ -60,9 +47,11 @@ class User_model extends CI_Model
 	{
 
 		$this->db->where('id', $id);
-		$result = $this->db->delete('siamphan_user');
+		$result = $this->db->delete('siamphan_category');
 		return $result;
-	}	
+	}
+
+
 
 }
 ?>

@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class User extends CI_Controller {
+class Category extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -56,92 +56,64 @@ class User extends CI_Controller {
 	
 	public function lists()
 	{
-		$this->load->model('user_model');
-		//var_dump($this->header["session"]["fullname"]);
-		$data["users"] = $this->user_model->lists();
+		$data = "";
+		$this->load->model('category_model');
+
+		$data["category"] = $this->category_model->lists();
 		$this->load->view('header',$this->header);
-		$this->load->view('user/list',$data);
+		$this->load->view('category/list',$data);
 		$this->load->view('footer');
 
 
 	}
 
-
 	public function add()
 	{
 
 		$data="";
-		var_dump($this->header["session"]);
 		$this->load->view('header',$this->header);
-		$this->load->view('user/add',$data);
+		$this->load->view('category/add',$data);
 		$this->load->view('footer');		
 
 	}
 	public function save()
 	{
 		$data = $_REQUEST;
-/*
-array(5) {
-  ["method"]=>
-  string(3) "api"
-  ["username"]=>
-  string(5) "aaaaa"
-  ["email"]=>
-  string(15) "aaaaa@admin.com"
-  ["password"]=>
-  string(4) "1234"
-  ["re_password"]=>
-  string(4) "1234"
-}
-
-*/
-		if ($data['password'] == $data['re_password'])
+		$insert_data = array(
+	        'name' => urldecode($data['name']) ,
+	        'status' => $data['status'],
+			'lastupdate' => date("Y-m-d H:i:s")
+		);
+		
+		$this->load->model('category_model');
+		$result = $this->category_model->save($insert_data);
+		if ($result == true)
 		{
-			$insert_data = array(
-		        'username' => urldecode($data['username']) ,
-		        'email' => urldecode($data['email']) ,
-		        'fullname' => urldecode($data['fullname']) ,
-		        'password' => urldecode(md5($data['password'])) ,
-		        'status' => urldecode($data['status']) ,
-		        'level' => $data['level'],
-				'lastlogin' => date("Y-m-d H:i:s")
-			);
-			
-			$this->load->model('user_model');
-			$result = $this->user_model->save($insert_data);
-			if ($result == true)
-			{
-				echo "Success";	
-			} 
-			else
-			{
-				echo "Fail";
-			}		
-
-		}
+			echo "Success";	
+		} 
 		else
 		{
 			echo "Fail";
-		}
+		}		
 	}
 
 	public function del($id)
 	{
 
-		$this->load->model('user_model');
-		$result = $this->user_model->delete($id);
+		$this->load->model('category_model');
+		$result = $this->category_model->delete($id);
 
 	}
 
 	public function edit()
 	{
 		$data["id"]=$this->input->get("id");
-		$this->load->model('user_model');
-		$data["userinfo"]  = $this->user_model->getuser($data);
-		//var_dump($data["userinfo"]);
+		$this->load->model('category_model');
+		$data["cateinfo"]  = $this->category_model->getcate($data);
+		
 		// Display
 		$this->load->view('header',$this->header);
-		$this->load->view('user/edit',$data);
+		$this->load->view('category/edit',$data);
 		$this->load->view('footer');		
 
 	}
@@ -152,17 +124,14 @@ array(5) {
 		$data = $_REQUEST;
 		//$id = $this->input->post('id', TRUE);
 		$id = $data["id"];
+
 		$update_data = array(
-	        'username' => urldecode($data['username']) ,
-	        'email' => urldecode($data['email']) ,
-	        'fullname' => urldecode($data['fullname']) ,
-	        'status' => urldecode($data['status']) ,
-	        'level' => $data['level'],
-			'lastlogin' => date("Y-m-d H:i:s")
+	        'name' => $data["name"],
+	        'status' => $this->input->post('status', TRUE),
+			'lastupdate' => date("Y-m-d H:i:s")
 		);
-		var_dump($update_data);
-		$this->load->model('user_model');
-		$result = $this->user_model->update($id,$update_data);
+		$this->load->model('category_model');
+		$result = $this->category_model->update($id,$update_data);
 		if ($result == true)
 		{
 			echo "Success";	
@@ -173,8 +142,6 @@ array(5) {
 		}
 
 	}
-
-
 		
 }
 /* End of file welcome.php */

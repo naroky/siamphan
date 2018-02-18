@@ -1,0 +1,16 @@
+<script type="text/javascript">
+	$('#orderdtail_list').DataTable( {
+        "paging":   false,
+        "ordering": false,
+        "info":     false
+    } );
+
+    $('#ordDetail').DataTable( {
+        "ajax": "<?php echo base_url();?>Sellorder/loadOrdetail/?method=api&id="+$('#order_id').val()
+    });	
+</script>
+<table id="ordDetail" class="table table-hover">
+</table>
+
+
+    
