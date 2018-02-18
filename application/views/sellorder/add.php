@@ -273,8 +273,8 @@ $(document).ready(function() {
             </div>
             <div class="col-md-4">
                 <div class="form-group label-floating">
-                    <label class="control-label">Due Date</label>
-                    <input id="duedate" name="duedate" type="text" class="datepicker form-control"  value=" ">
+                    <label class="control-label">Credit</label>
+                    <input id="credit" name="credit" type="text" class="form-control" >
                 </div>
             </div>
             <div class="col-md-4">
@@ -282,7 +282,13 @@ $(document).ready(function() {
                     <label class="control-label">Send Date</label>
                     <input id="senddate" name="senddate" type="text" class="datepicker form-control"  value=" ">
                 </div>
-            </div>          
+            </div>
+            <div class="col-md-4">
+                <div class="form-group label-floating">
+                    <label class="control-label">Staff</label>
+                    <input id="fullname" name="fullname" type="text" class="form-control"  value="<?php echo $fullname?>">
+                </div>
+            </div>                       
             <div class="col-md-12">
                 <div class="form-group label-floating">
                     <input type="hidden" id="cust_id" name="cust_id" value=''/>

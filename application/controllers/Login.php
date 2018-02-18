@@ -40,15 +40,15 @@ class Login extends CI_Controller {
 	public function auth()
 	{
 
-		$this->load->model('User_model');
+		$this->load->model('user_model');
 
 		$username = $this->input->post("username");
 		$password = $this->input->post("password");
 		
 		$password_encode = MD5($password);
 		echo "user:".$username."<br/>";
-		$result = $this->User_model->getUserAuthen($username);
-
+		$result = $this->user_model->getUserAuthen($username);
+		var_dump($result);
 		if (count($result) > 0 )
 		{
 			$user = $result[0];
@@ -62,6 +62,7 @@ class Login extends CI_Controller {
 				$session_array=array(
 				'id'=>(string)$user->id,
 				'username'=>(string)$user->username,
+				'fullname'=>(string)$user->fullname,
 				'email'=>(string)$user->email,
 				'status'=>(string)$user->status,
 				'level'=>(string)$user->level,

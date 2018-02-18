@@ -36,16 +36,16 @@ $(document).ready(function() {
   $("#btn-save").click(function()
   {
     
-    result = $("#ajaxform").validationEngine("validate");
+    //result = $("#ajaxform").validationEngine("validate");
     saveURL = "<?php echo base_url();?>user/save/?method=api";
-    if (result == true)
-    {
+    //if (result == true)
+    //{
       alert("save");
       $("#ajaxform").submit();      
-    } else
-    {
-      alert("fail");
-    }
+    //} else
+    //{
+      //alert("fail");
+    //}
 
   });
 });
@@ -61,13 +61,20 @@ $(document).ready(function() {
               <div class="card-content">
                   <form id="ajaxform" name="form-add" method="post" action="">
                     <div class="row">
-                        <div class="col-md-5">
+                        <div class="col-md-3">
                             <div class="form-group label-floating">
                                 <label class="control-label">Username</label>
-                                <input id="username" name="username" type="text" class="form-control" >
+                                <input id="username" name="username" type="text" class="form-control">
                             </div>
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-md-3">
+                            <div class="form-group label-floating">
+                                <label class="control-label">Fullname</label>
+                                <input id="fullname" name="fullname" type="text" class="form-control" >
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
                             <div class="form-group label-floating">
                                 <label class="control-label">Email address</label>
                                 <input id="email" name="email" type="email" class="form-control">

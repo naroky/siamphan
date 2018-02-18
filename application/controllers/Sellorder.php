@@ -66,8 +66,8 @@ class Sellorder extends CI_Controller {
 	
 	public function lists()
 	{
-		$this->load->model('Sellorder_model');
-		$data["sellorder"] = $this->Sellorder_model->lists();
+		$this->load->model('sellorder_model');
+		$data["sellorder"] = $this->sellorder_model->lists();
 		$this->load->view('header',$this->header);
 		$this->load->view('sellorder/list',$data);
 		$this->load->view('footer');
@@ -80,6 +80,8 @@ class Sellorder extends CI_Controller {
 	{
 
 		$data="";
+		//var_dump($this->header["session"]["fullname"]);
+		$data["fullname"] = $this->header["session"]["fullname"];
 		$this->load->view('header',$this->header);
 		$this->load->view('sellorder/add',$data);
 		$this->load->view('footer');		
@@ -93,15 +95,16 @@ class Sellorder extends CI_Controller {
 	        'cust_id' => urldecode($data['cust_id']) ,
 	        'cust_name' => urldecode($data['cust_name']) ,
 	        'cust_address' => urldecode($data['cust_address']) ,
-	        'duedate' => urldecode($data['duedate']) ,
+	        'credit' => urldecode($data['credit']) ,
 	        'senddate' => $data['senddate'],
+	        'user_fullname' => $data['fullname'],
 			'total_price' => '0',
 			'total_vat' => '0',
 			'lastupdate' => date("Y-m-d H:i:s")
 		);
 		
-		$this->load->model('Sellorder_model');
-		$result = $this->Sellorder_model->savehdorder($create_data);
+		$this->load->model('sellorder_model');
+		$result = $this->sellorder_model->savehdorder($create_data);
 		if ($result != false)
 		{
 
@@ -172,8 +175,8 @@ order_id:10
 			'lastupdare' => date("Y-m-d H:i:s")
 		);
 		
-		$this->load->model('Sellorder_model');
-		$result = $this->Sellorder_model->savedetail($insert_data);
+		$this->load->model('sellorder_model');
+		$result = $this->sellorder_model->savedetail($insert_data);
 		if ($result == true)
 		{
 			echo "Success";	
@@ -187,8 +190,8 @@ order_id:10
 	function loadOrdetail()
 	{
 		$data["order_id"] = $this->input->get('id');
-		$this->load->model('Sellorder_model');
-		$result = $this->Sellorder_model->detail_lists($data);
+		$this->load->model('sellorder_model');
+		$result = $this->sellorder_model->detail_lists($data);
 		$data["result"] = $result;
 		$this->load->view('sellorder/orderlist_table',$data);
 
@@ -198,11 +201,11 @@ order_id:10
 	public function del($id)
 	{
 
-		$this->load->model('Sellorder_model');
-		$result = $this->Sellorder_model->delSellorder($id);
+		$this->load->model('sellorder_model');
+		$result = $this->sellorder_model->delSellorder($id);
 		if ($result == true)
 		{
-			$result = $this->Sellorder_model->delOrdDetail($id);
+			$result = $this->sellorder_model->delOrdDetail($id);
 
 		}
 
@@ -212,9 +215,9 @@ order_id:10
 	{
 		$data["order_id"]=$this->input->get("id");
 		$data["id"]=$this->input->get("id");
-		$this->load->model('Sellorder_model');
-		$data["orderInfo"]  = $this->Sellorder_model->getSellorder($data);
-		$data["orderList"]  = $this->Sellorder_model->detail_lists($data);
+		$this->load->model('sellorder_model');
+		$data["orderInfo"]  = $this->sellorder_model->getSellorder($data);
+		$data["orderList"]  = $this->sellorder_model->detail_lists($data);
 		
 		// Display
 		$this->load->view('header',$this->header);
@@ -227,9 +230,9 @@ order_id:10
 	{
 		$data["order_id"]=$this->input->get("id");
 		$data["id"]=$this->input->get("id");
-		$this->load->model('Sellorder_model');
-		$data["orderInfo"]  = $this->Sellorder_model->getSellorder($data);
-		$data["orderList"]  = $this->Sellorder_model->detail_lists($data);
+		$this->load->model('sellorder_model');
+		$data["orderInfo"]  = $this->sellorder_model->getSellorder($data);
+		$data["orderList"]  = $this->sellorder_model->detail_lists($data);
 		// Display
 		$this->load->view('sellorder/print',$data);
 	}
@@ -265,8 +268,8 @@ order_id:10
 	{
 		$data = $_REQUEST;
 		$id = $data["id"];		
-		$this->load->model('Sellorder_model');
-		$result = $this->Sellorder_model->delordItem($id);	
+		$this->load->model('sellorder_model');
+		$result = $this->sellorder_model->delordItem($id);	
 	}
 
 		

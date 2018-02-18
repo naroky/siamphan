@@ -28,8 +28,7 @@
                     <td>&nbsp;<?php echo $row->id?></td>
                     <td>&nbsp;<?php echo $row->cust_id?></td>
                     <td>&nbsp;<?php echo $row->cust_name?></td>
-                    <?php $duedate=date_create($row->duedate);?>
-                    <td>&nbsp;<?php echo date_format($duedate,"Y/m/d");?></td>
+                    <td>&nbsp;<?php echo $row->credit;?></td>
                     <?php $senddate=date_create($row->senddate);?>
                     <td>&nbsp;<?php echo date_format($senddate,"Y/m/d");?></td>
                     <td>&nbsp;<?php echo $row->total_price?></td>

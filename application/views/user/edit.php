@@ -36,16 +36,16 @@ $(document).ready(function() {
   $("#btn-save").click(function()
   {
     
-    result = $("#ajaxform").validationEngine("validate");
+    //result = $("#ajaxform").validationEngine("validate");
     saveURL = "<?php echo base_url();?>User/update/?method=api";
-    if (result == true)
-    {
+    //if (result == true)
+    //{
       alert("save");
       $("#ajaxform").submit();      
-    } else
-    {
-      alert("fail");
-    }
+    //} else
+    //{
+      //alert("fail");
+    //}
 
   });
 });
@@ -64,34 +64,59 @@ $(document).ready(function() {
                     foreach ($userinfo as $row) {
                     ?>
                     <div class="row">
-                        <div class="col-md-5">
+                        <div class="col-md-3">
                             <div class="form-group label-floating">
                                 <label class="control-label">Username</label>
                                 <input id="username" name="username" type="text" class="form-control" value="<?php echo $row->username?>">
                             </div>
                         </div>
-                        <div class="col-md-5">
+
+                        <div class="col-md-3">
+                            <div class="form-group label-floating">
+                                <label class="control-label">Fullname</label>
+                                <input id="fullname" name="fullname" type="text" class="form-control"  value="<?php echo $row->fullname?>">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
                             <div class="form-group label-floating">
                                 <label class="control-label">Email address</label>
                                 <input id="email" name="email" type="email" class="form-control" value="<?php echo $row->email?>">
                             </div>
                         </div>
                     </div>
-                    
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group label-floating">
                                 <label class="control-label">Status</label>
-                                <input id="status" name="status" type="text" class="form-control"  value="<?php echo $row->status?>">
+
+
+                                <?php 
+                                $options = array('1' => 'Active', '2' => 'InActive');
+                                $default = $row->status;
+                                ?>
+                                <?php echo form_dropdown('status', $options, $default,'class="form-control"');?>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group label-floating">
-                                <label class="control-label">Level</label>
-                                <input id="level" name="level" type="text" class="form-control"  value="<?php echo $row->level?>">
+                                <label class="control-label">Level</label>                                                          
+                                <?php 
+                                $options = array('0' => 'Admin',
+                                 '1' => 'Super User',
+                                 '2' => 'Sell',
+                                 '3' => 'Order',
+                                 '4' => 'Packaging',
+                                 '5' => 'Delivery',
+                                );
+                                $default = $row->level;
+                                ?>
+                                <?php echo form_dropdown('level', $options, $default,'class="form-control"');?>                                
                             </div>
                         </div>
                     </div>
+
+
                     <input type="hidden" name="id" id="id" value="<?php echo $row->id?>"> 
                     <button id="btn-save" type="button" class="btn btn-primary pull-right">Update Profile</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -56,13 +56,10 @@ class User extends CI_Controller {
 	
 	public function lists()
 	{
-		$this->load->model('User_model');
-
-		$data["users"] = $this->User_model->lists();
-
-		
+		$this->load->model('user_model');
+		//var_dump($this->header["session"]["fullname"]);
+		$data["users"] = $this->user_model->lists();
 		$this->load->view('header',$this->header);
-
 		$this->load->view('user/list',$data);
 		$this->load->view('footer');
 
@@ -74,6 +71,7 @@ class User extends CI_Controller {
 	{
 
 		$data="";
+		var_dump($this->header["session"]);
 		$this->load->view('header',$this->header);
 		$this->load->view('user/add',$data);
 		$this->load->view('footer');		
@@ -102,14 +100,15 @@ array(5) {
 			$insert_data = array(
 		        'username' => urldecode($data['username']) ,
 		        'email' => urldecode($data['email']) ,
+		        'fullname' => urldecode($data['fullname']) ,
 		        'password' => urldecode(md5($data['password'])) ,
 		        'status' => urldecode($data['status']) ,
 		        'level' => $data['level'],
 				'lastlogin' => date("Y-m-d H:i:s")
 			);
 			
-			$this->load->model('User_model');
-			$result = $this->User_model->save($insert_data);
+			$this->load->model('user_model');
+			$result = $this->user_model->save($insert_data);
 			if ($result == true)
 			{
 				echo "Success";	
@@ -129,17 +128,17 @@ array(5) {
 	public function del($id)
 	{
 
-		$this->load->model('User_model');
-		$result = $this->User_model->delete($id);
+		$this->load->model('user_model');
+		$result = $this->user_model->delete($id);
 
 	}
 
 	public function edit()
 	{
 		$data["id"]=$this->input->get("id");
-		$this->load->model('User_model');
-		$data["userinfo"]  = $this->User_model->getuser($data);
-		var_dump($data["userinfo"]);
+		$this->load->model('user_model');
+		$data["userinfo"]  = $this->user_model->getuser($data);
+		//var_dump($data["userinfo"]);
 		// Display
 		$this->load->view('header',$this->header);
 		$this->load->view('user/edit',$data);
@@ -156,13 +155,14 @@ array(5) {
 		$update_data = array(
 	        'username' => urldecode($data['username']) ,
 	        'email' => urldecode($data['email']) ,
+	        'fullname' => urldecode($data['fullname']) ,
 	        'status' => urldecode($data['status']) ,
 	        'level' => $data['level'],
 			'lastlogin' => date("Y-m-d H:i:s")
 		);
 		var_dump($update_data);
-		$this->load->model('User_model');
-		$result = $this->User_model->update($id,$update_data);
+		$this->load->model('user_model');
+		$result = $this->user_model->update($id,$update_data);
 		if ($result == true)
 		{
 			echo "Success";	

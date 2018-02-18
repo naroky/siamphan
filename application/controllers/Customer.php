@@ -67,9 +67,9 @@ class Customer extends CI_Controller {
 	public function lists()
 	{
 		$data = "";
-		$this->load->model('Customer_model');
+		$this->load->model('customer_model');
 
-		$data["customer"] = $this->Customer_model->lists();
+		$data["customer"] = $this->customer_model->lists();
 		$this->load->view('header',$this->header);
 		$this->load->view('customer/list',$data);
 		$this->load->view('footer');
@@ -181,9 +181,9 @@ class Customer extends CI_Controller {
 	{
 
 		$data = "";
-		$this->load->model('Customer_model');
+		$this->load->model('customer_model');
 		$data["key"] = $this->input->get('char');
-		$data["customer"] = $this->Customer_model->cust_searchname($data);
+		$data["customer"] = $this->customer_model->cust_searchname($data);
 		$this->load->view('customer/search_box',$data);
 
 

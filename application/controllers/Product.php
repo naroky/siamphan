@@ -57,9 +57,9 @@ class Product extends CI_Controller {
 	public function lists()
 	{
 		$data = "";
-		$this->load->model('Product_model');
+		$this->load->model('product_model');
 
-		$data["product"] = $this->Product_model->lists();
+		$data["product"] = $this->product_model->lists();
 		$this->load->view('header',$this->header);
 		$this->load->view('product/list',$data);
 		$this->load->view('footer');
@@ -164,9 +164,9 @@ class Product extends CI_Controller {
 	{
 
 		$data = "";
-		$this->load->model('Product_model');
+		$this->load->model('product_model');
 		$data["key"] = $this->input->get('char');
-		$data["product"] = $this->Product_model->prod_searchname($data);
+		$data["product"] = $this->product_model->prod_searchname($data);
 		$this->load->view('product/search_box',$data);
 
 
