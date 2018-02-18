@@ -40,7 +40,7 @@ class Login extends CI_Controller {
 	public function auth()
 	{
 
-		$this->load->model('user_model');
+		$this->load->model('User_model');
 
 		$username = $this->input->post("username");
 		$password = $this->input->post("password");
