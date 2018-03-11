@@ -71,7 +71,7 @@ class User extends CI_Controller {
 	{
 
 		$data="";
-		var_dump($this->header["session"]);
+		//var_dump($this->header["session"]);
 		$this->load->view('header',$this->header);
 		$this->load->view('user/add',$data);
 		$this->load->view('footer');		

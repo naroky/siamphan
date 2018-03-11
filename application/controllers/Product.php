@@ -129,6 +129,7 @@ class Product extends CI_Controller {
 			//var_dump($row);
 			$cate_data[$row->id] = $row->name;
 		}
+		$data["cate_data"] = $cate_data;
 		$this->load->view('header',$this->header);
 		$this->load->view('product/edit',$data);
 		$this->load->view('footer');		

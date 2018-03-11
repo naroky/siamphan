@@ -1,56 +1,65 @@
-<ul class="nav">
-    <li class="active">
-        <a href="dashboard.html">
-            <i class="material-icons">dashboard</i>
-            <p>Dashboard</p>
-        </a>
-    </li>
-    <li>
-        <a href="<?php echo base_url()?>User">
-            <i class="material-icons">person</i>
-            <p>Users</p>
-        </a>
-    </li>
-    <li>
-        <a href="<?php echo base_url()?>Customer">
-            <i class="material-icons">content_paste</i>
-            <p>Customer</p>
-        </a>
-    </li>
-    <li>
-        <a href="<?php echo base_url()?>Product">
-            <i class="material-icons">library_books</i>
-            <p>Product</p>
-        </a>
-    </li>
-    <li>
-        <a href="<?php echo base_url()?>Category">
-            <i class="material-icons">library_books</i>
-            <p>Category</p>
-        </a>
-    </li>    
-    <li>
-        <a href="<?php echo base_url()?>Sellorder">
-            <i class="material-icons">bubble_chart</i>
-            <p>Sell Order</p>
-        </a>
-    </li>
-    <li>
-        <a href="./maps.html">
-            <i class="material-icons">location_on</i>
-            <p>Sell</p>
-        </a>
-    </li>
-    <li>
-        <a href="./notifications.html">
-            <i class="material-icons text-gray">notifications</i>
-            <p>Notifications</p>
-        </a>
-    </li>
-    <li class="active-pro">
-        <a href="upgrade.html">
-            <i class="material-icons">unarchive</i>
-            <p>Upgrade to PRO</p>
-        </a>
-    </li>
-</ul>
+ <!-- =============================================== -->
+
+  <!-- Left side column. contains the sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- Sidebar user panel -->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p>Alexander Pierce</p>
+          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        </div>
+      </div>
+      <!-- search form -->
+      <form action="#" method="get" class="sidebar-form">
+        <div class="input-group">
+          <input type="text" name="q" class="form-control" placeholder="Search...">
+          <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                </button>
+              </span>
+        </div>
+      </form>
+      <!-- /.search form -->
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu" data-widget="tree">
+        <li class="header">MAIN NAVIGATION</li>
+        <li class="treeview">
+          <a href="Home">
+            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+          </a>
+        </li>
+        <li >
+          <a href="<?php echo base_url()?>User">
+            <i class="fa fa-files-o"></i>
+            <span>Users</span>
+          </a>
+        </li>
+        <li>
+          <a href="<?php echo base_url()?>Customer">
+            <i class="fa fa-th"></i> <span>Customer</span>
+          </a>
+        </li>
+        <li >
+          <a href="<?php echo base_url()?>Product">
+            <i class="fa fa-pie-chart"></i>
+            <span>Product</span>
+          </a>
+        </li>
+        <li >
+          <a href="<?php echo base_url()?>Category">
+            <i class="fa fa-pie-chart"></i>
+            <span>Category</span>
+          </a>
+        </li>
+       
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- =============================================== -->
